@@ -1,0 +1,21 @@
+Name: maryam
+ID: 1894478
+Date of Birth: 06/06/2002
+Payment: 12345678910
+Insurance Type: unicorn
+Balance: 0
+---------------------------
+Name: sarah
+ID: 12345
+Date of Birth: 03/03/2002
+Payment: 12345678910
+Insurance Type: alien
+Balance: 0
+---------------------------
+Name: vi
+ID: 12345
+Date of Birth: 04/04/2003
+Payment: 12345678910
+Insurance Type: zombie
+Balance: 0
+---------------------------
