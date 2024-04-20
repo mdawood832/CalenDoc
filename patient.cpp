@@ -398,12 +398,19 @@ start :
                 fstream f1;
                 char ch;
                 int book_id = 1;
-                f1.open("feedback.txt",ios::in|ios::out|ios::app|ios::binary);
+                f1.open("feedback.txt",ios::out | ios::app);
                 cout << "\t\tWelcome to Feedback Collection\n";
                 cout << "\t\t---------------------------\n";
 
                     b.getFeedback();
-                    f1.write((char *)&b , sizeof(b));
+        
+                    // Write feedback information as a structured record in the file
+                    f1 << "Name: " << b.patientName << endl;
+                    f1 << "ID: " << b.patientID << endl;
+                    f1 << "Date: " << b.date << endl;
+                    f1 << "Rating: " << b.rating << endl;
+                    f1 << "---------------------------" << endl;
+
 
                     cout << "\n\t\tFeedback Details are the following\n";
                     cout << "\t\t-----------------------------\n";
