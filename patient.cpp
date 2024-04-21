@@ -8,12 +8,7 @@
 #include <sstream>
 using namespace std;
 
-
-//copay calculation for patient
-
 //  WORKING ON: 
-//HAVE PATIENT ENTER THEIR NAME AND IT WILL 
-//PULL UP DETAILS 
 //patient copay calculation 
 
 
@@ -70,7 +65,6 @@ class PatientInformationCollection
 
 };
 
-
 class Feedback
 {
     public :
@@ -99,8 +93,6 @@ class Feedback
             cout <<setw(15)<< patientName <<setw(20)<< patientID <<setw(30)<< date <<setw(20)<< rating <<endl;
         }
 };
-
-
 
 int bookAppointment(){
                 cout<<"\n ----- Book Your Appointment ---- \n";	
@@ -323,8 +315,21 @@ void searchPatient(const std::string& name, std::ifstream& file) {
     }
 }
 
+void validateInsurance(string& insuranceType){
+        string acceptedInsurances[3] = {"alien", "zombie","unicorn"};
 
 
+                    for (int i = 0; i < 3; i++) {
+                        if (insuranceType == acceptedInsurances[i]){
+                            cout << "You Insurance is accepted." <<endl;
+                            break;
+                        } else {
+                            cout << "You Insurance is not accepted." << endl;
+                            break; 
+                        }            
+                    
+                    }
+}
 
 
 int main()
@@ -384,7 +389,7 @@ start:
                         f1 << b.patientID << " ";
                         f1 << b.dateOfBirth << " ";
                         f1 << b.patientPayment << " ";
-                        f1 << b.insuranceType << " ";
+                        f1 << b.insuranceType << " "; //does not work since we changed format 
                         f1 << b.currentBalance << endl;
 
                     //printing details to screen 
@@ -519,46 +524,11 @@ start:
         {
                 cout << "\t\tWelcome to Insurance Validation \n";
                 cout << "\t\t---------------------------\n";
-                PatientInformationCollection p;
-                fstream f6;
-                //REMOVE BINARY
-                f6.open("booking.txt",ios::in|ios::out|ios::binary);
-                f6.seekg(0,ios::beg);
-                f6.read((char *)&p,sizeof(p));
-                cout.setf(ios::left);
-                string acceptedInsurances[3] = {"alien", "zombie","unicorn"}; 
 
-                string target_name; 
-                cout << " What is your name? " << endl; 
-                cin >> target_name; 
-               
-                while(f6)
-                {
-                    if (p.patientName == target_name)
-                    {
-                        
-                    
-                    //chnage insurance type to all lowercase 
-                    transform(p.insuranceType.begin(), p.insuranceType.end(), p.insuranceType.begin(), ::tolower);
-                    bool accepted = false;
-                    for (int i = 0; i < 3; i++) {
-                        if (p.insuranceType == acceptedInsurances[i]){
-                            accepted = true;
-                            break;
-                        }
-                    }
-
-                    if (accepted) {
-                        cout << "You Insurance is accepted." <<endl;
-                    } else {
-                        cout << "You Insurance is not accepted." << endl;
-                    }
-                    }
-                        f6.read((char *)&p,sizeof(p));
-                    
-                }
-
-                f6.close();
+                string name; 
+                cout << "Enter your insurance type: " << endl; 
+                cin >> name;
+                validateInsurance(name); 
 
                 char c6;
                 cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";

@@ -24,10 +24,7 @@ start :
         cout << "\t1. Patient Information Collection\n";
         cout << "\t2. Schedule an Appointment\n";
         cout << "\t3. Cancel an Appointment\n";
-        cout << "\t4. Patient Details\n"; //does not work
-        cout << "\t5. Submit Feedback\n";
-        cout << "\t6. Insurance Validation\n";
-        cout << "\t7. Modify Patient Info\n";
+   
 
         cout << "Please Enter your Preferred Choice :- ";
         cin >> choice;
