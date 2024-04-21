@@ -8,8 +8,6 @@
 #include <sstream>
 using namespace std;
 
-//  WORKING ON: 
-//patient copay calculation 
 
 
 class PatientInformationCollection
@@ -318,19 +316,31 @@ void searchPatient(const std::string& name, std::ifstream& file) {
 void validateInsurance(string& insuranceType){
         string acceptedInsurances[3] = {"alien", "zombie","unicorn"};
 
-
+                    int count = 0; 
                     for (int i = 0; i < 3; i++) {
                         if (insuranceType == acceptedInsurances[i]){
-                            cout << "You Insurance is accepted." <<endl;
-                            break;
-                        } else {
-                            cout << "You Insurance is not accepted." << endl;
-                            break; 
-                        }            
-                    
+                            count = 1; 
+                        }          
+                    }
+
+                    if(count ==1){
+                        cout << "your insurance is accepted" << endl; 
+                    } else {
+                        cout << "your insurance is NOT accepted" << endl; 
                     }
 }
 
+int main(); 
+void goToStart(){
+                char c6;
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cin >> c6;
+
+                if(c6 == 'q'|| c6 == 'Q')
+                    exit(EXIT_FAILURE);
+                else
+                    main(); 
+}
 
 int main()
 {
@@ -403,30 +413,14 @@ start:
                     tag = false; 
                 } while (tag);
 
-                char c6;
-                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
-                cin >> c6;
-
-                if(c6 == 'q'|| c6 == 'Q')
-                    exit(EXIT_FAILURE);
-                else
-                    goto start;
-
-                    
+                    goToStart(); 
             }
             break;
 
           case 2:
             {   
                 bookAppointment(); 
-
-                    char c1;
-                    cout << "\tPress 'q' to terminate or any other key to return to HomeScreen :- ";
-                    cin >> c1;
-                    if (c1 == 'q' || c1 == 'Q')
-                        exit(EXIT_FAILURE);
-                    else
-                        goto start;
+                goToStart(); 
 
             }
             break; 
@@ -434,15 +428,7 @@ start:
         case 3:
             {    
                 cancelAppointment(); 
-
-                
-                    char c1;
-                    cout << "\tPress 'q' to terminate or any other key to return to HomeScreen :- ";
-                    cin >> c1;
-                    if (c1 == 'q' || c1 == 'Q')
-                        exit(EXIT_FAILURE);
-                    else
-                        goto start;
+                goToStart(); 
             }
         
         break;
@@ -465,13 +451,7 @@ start:
 
                 inputFile.close();
 
-                char c1;
-                    cout << "\tPress 'q' to terminate or any other key to return to HomeScreen :- ";
-                    cin >> c1;
-                    if (c1 == 'q' || c1 == 'Q')
-                        exit(EXIT_FAILURE);
-                    else
-                        goto start;
+            goToStart(); 
 
             }
             break;
@@ -509,14 +489,7 @@ start:
                 cin.clear(); // Clear any errors
                 cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard the input buffer
 
-                char c1;
-                cout << "\tPress 'q' to terminate or any other key to return to HomeScreen :- ";
-                cin >>c1;
-                if(c1 == 'q' || c1 == 'Q')
-                    exit(EXIT_FAILURE);
-                else
-                    goto start;
-                f1.close();
+            goToStart(); 
         }
         break;
 
@@ -529,29 +502,14 @@ start:
                 cout << "Enter your insurance type: " << endl; 
                 cin >> name;
                 validateInsurance(name); 
-
-                char c6;
-                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
-                cin >> c6;
-
-                if(c6 == 'q'|| c6 == 'Q')
-                    exit(EXIT_FAILURE);
-                else
-                    goto start;
+                goToStart(); 
         }
         break; 
 
         case 7 : 
         {
             modifyAppointment(); 
-                char c6;
-                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
-                cin >> c6;
-
-                if(c6 == 'q'|| c6 == 'Q')
-                    exit(EXIT_FAILURE);
-                else
-                    goto start;
+            goToStart(); 
                     
         }
     }
