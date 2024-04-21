@@ -9,15 +9,20 @@
 using namespace std;
 
 
-//CHANGES - cancellation fee for cancelling an appointment instead of late fee
-//copay calculation for patient 
+//copay calculation for patient
+
+//  WORKING ON: 
+//HAVE PATIENT ENTER THEIR NAME AND IT WILL 
+//PULL UP DETAILS 
+//patient copay calculation 
+
 
 class PatientInformationCollection
 {
     public :
-        char patientName[20];
+        string patientName;
         int patientID;
-        char dateOfBirth[10];
+        string dateOfBirth;
         string patientPayment;
         int currentBalance = 0;  
         string insuranceType; 
@@ -69,42 +74,6 @@ class PatientInformationCollection
 };
 
 
-//appointment class
-//NOTE: does not have option where you dont book overlapping appointments 
-class Appointment
-{
-    public :
-    char patientName[20];
-    char date[10];
-    char time[5];
-    char type[20];
-    int cancellationFee = 50; 
-    // string availabilty; 
-    // string appointmentStatus; 
-    // string currentAppointments; 
-
-    
-        void appointmentInfo()
-        {
-            cout << "Enter Patient's Name (all lowercase): ";
-            cin >> patientName; 
-
-            cout << "Date of Appointment Monday-Friday ( DD/MM/YYYY ): ";
-            cin >> date;
-
-            cout << "Time of Appointment 9am-5pm (00:00): ";
-            cin >> time;
-
-            cout << "Type of Appointment: "; 
-            cin >> type;
-        }
-
-        // void chargeCancellationFee( )
-        // {
-        //     currentBalance = currentBalance + cancellationFee; 
-        // }
-};
-
 class Feedback
 {
     public :
@@ -134,28 +103,208 @@ class Feedback
         }
 };
 
-//PASS BY REFERNCE IF MOVED TO ANOTHER FILE 
-bool hasConflict(const Appointment& newAppointment, const vector<Appointment>& appointments) {
-    for (int i = 0; i < appointments.size(); ++i) {
-        const Appointment& existingAppointment = appointments[i];
-        if (strcmp(existingAppointment.date, newAppointment.date) == 0 &&
-            strcmp(existingAppointment.time, newAppointment.time) == 0) {
-            return true; // Conflict found
+
+
+int bookAppointment(){
+                cout<<"\n ----- Book Your Appointment ---- \n";	
+                cout<<"\n ----- Availbale slots ---- \n";	 
+
+                //check if record already exist..
+                ifstream read;
+                read.open("appointments.txt");
+                
+                int hoursbook = 8;
+                
+                int arr[13] = {0,0,0,0,0,0,0,0,0,0,0,0,0};
+                int recordFound =0; 
+                
+                if(read)
+                {     
+                    string line;
+                    char key = 'A';
+                    int i = 9;
+	       
+                    while(getline(read, line)) {
+                        char temp = line[0];
+                        int index = (temp - 65);
+                        arr[index]=1;  
+                        recordFound = 1;
+                    }
+                    if(recordFound == 1)
+                    {
+                        cout<<"\n Appointment Summary by hours:";
+                        char key = 'A';
+                        int hours = 9;
+                        for(int i = 0; i<=12; i++)
+                        {
+                            if(i == 0){
+                                if(arr[i] == 0) 
+                                    cout<<"\n "<<key<<"-> 0"<<hours<<" - Available";
+                                else
+                                    cout<<"\n "<<key<<"-> 0"<<hours<<" - Booked";
+                            }
+                            
+                            else
+                            {								           	
+                                if(arr[i] == 0) 
+                                    cout<<"\n "<<key<<"->"<<hours<<" - Available";
+                                else
+                                    cout<<"\n "<<key<<"->"<<hours<<" - Booked";
+                            }
+
+                            hours++; key++;
+                        }
+                            
+                    }
+                        
+                    read.close();
+                }
+
+                if(recordFound == 0){
+                    cout<<"\n Appointment Available for following hours :";
+                    char key = 'A';
+
+                for(int i = 9; i<=21; i++)
+                {
+                    if(i==9)
+                        cout<<"\n "<<key<<" -> 0"<<i<<" - Available";
+                    else
+                        cout<<"\n "<<key<<" -> "<<i<<" - Available";
+                        key++;
+                }
+                
+                }
+   
+            char choice;
+            cout<<"\n\n Input your choice : ";
+            cin>>choice;
+        
+            if( !(choice >= 'A' && choice <='Z'))
+            {
+            cout<<"\n Error : Invalid Selection";
+            cout<<"\n Please selction correct value from menu A- Z";
+            cout<<"\n Press any key to continue";
+            getchar();getchar();
+            system("cls");
+            bookAppointment();
+             }
+   
+        int index = (choice-65 );
+        int isBooked = 1;
+        if(arr[index] == 0) 
+            isBooked = 0;
+      
+        if(isBooked ==1)
+        {
+            cout<<"\n Error : Appointment is already booked for this Hour";
+            cout<<"\n Please select different time !!";
+            cout<<"\n Press any key to continue!!";
+            getchar();getchar();
+            system("cls");
+            bookAppointment();
         }
-    }
-    return false; // No conflict found
+        
+        string name;
+        cout<<"\n Enter your first name:";
+        cin>>name;  
+        
+        ofstream out;
+        out.open("appointments.txt", ios::app);
+
+        if(out){
+            out<<choice<<":"<<name.c_str()<<"\n";
+            out.close();
+            cout<<"\n Appointment booked for Hours : "<< (choice-65) + 9 <<" successfully !!";
+        }
+        else{
+            cout<<"\n Error while saving booking";
+        }
+
+        return 0;
 }
 
-// bool hasConflict(const Appointment newAppointment, const vector<Appointment> appointments) {
-//     for (int i = 0; i < appointments.size(); ++i) {
-//         const Appointment existingAppointment = appointments[i];
-//         if (strcmp(existingAppointment.date, newAppointment.date) == 0 &&
-//             strcmp(existingAppointment.time, newAppointment.time) == 0) {
-//             return true; 
-//         }
-//     }
-//     return false; 
-// }
+void cancelAppointment() {
+           string name;
+            cout << "Enter your name to cancel appointment: ";
+            cin >> name; 
+
+            ifstream inFile("appointments.txt");
+            ofstream outFile("temp.txt");
+            if (!inFile) {
+                cerr << "Error: Unable to open file." << endl;
+                return;
+            }
+
+            bool found = false;
+            string line;
+            while (getline(inFile, line)) {
+                size_t pos = line.find(":");
+                if (pos != string::npos) {
+                    string appointmentName = line.substr(pos + 1);
+                    if (appointmentName == name) {
+                        found = true;
+                        continue;
+                    }
+                }
+                outFile << line << endl;
+            }
+
+            inFile.close();
+            outFile.close();
+
+            if (found) {
+                remove("appointments.txt");
+                rename("temp.txt", "appointments.txt");
+                cout << "Appointment cancelled successfully." << endl;
+            } else {
+                remove("temp.txt");
+                cout << "Appointment not found for the given name." << endl;
+            }
+}
+
+void modifyAppointment() {
+    string name;
+    cout << "Enter your name to modify appointment: ";
+    cin >> name; 
+
+    ifstream inFile("appointments.txt");
+    ofstream outFile("temp.txt");
+    if (!inFile) {
+        cerr << "Error: Unable to open file." << endl;
+        return;
+    }
+
+    bool found = false;
+    string line;
+    while (getline(inFile, line)) {
+        size_t pos = line.find(":");
+        if (pos != string::npos) {
+            string appointmentName = line.substr(pos + 1);
+            if (appointmentName == name) {
+                found = true;
+                string newAppointment;
+                cout << "Enter new appointment (format: A:NewName): ";
+                cin >> newAppointment; 
+                outFile << newAppointment << endl;
+                break; 
+            }
+        }
+        outFile << line << endl;
+    }
+
+    inFile.close();
+    outFile.close();
+
+    if (found) {
+        remove("appointments.txt");
+        rename("temp.txt", "appointments.txt");
+        cout << "Appointment modified successfully." << endl;
+    } else {
+        remove("temp.txt");
+        cout << "Appointment not found for the given name." << endl;
+    }
+}
+
 
 int main()
 {
@@ -172,12 +321,14 @@ start :
         cout << "\t1. Patient Information Collection\n";
         cout << "\t2. Schedule an Appointment\n";
         cout << "\t3. Cancel an Appointment\n";
-        cout << "\t4. Patient Details\n";
+        cout << "\t4. Patient Details\n"; //does not work
         cout << "\t5. Submit Feedback\n";
         cout << "\t6. Insurance Validation\n";
+        cout << "\t7. Modify Patient Info\n";
+
         cout << "Please Enter your Preferred Choice :- ";
         cin >> choice;
-        if(choice<1 || choice >6)
+        if(choice<1 || choice >7)
         {
             cout << "\nInvalid Choice . Please Try Again .\n";
             k++;
@@ -186,7 +337,7 @@ start :
 
     switch (choice)
     {
-        case 1: //problem with this is that it only makes one isntance of the information and then deletes the last patient 
+        case 1:  
             {
 
                 PatientInformationCollection b;
@@ -206,13 +357,12 @@ start :
                 bool tag = true; 
                 do {
                     b.getInfo();
-                        f1 << "Name: " << b.patientName << endl;
-                        f1 << "ID: " << b.patientID << endl;
-                        f1 << "Date of Birth: " << b.dateOfBirth << endl;
-                        f1 << "Payment: " << b.patientPayment << endl;
-                        f1 << "Insurance Type: " << b.insuranceType << endl;
-                        f1 << "Balance: " << b.currentBalance << endl;
-                        f1 << "---------------------------" << endl;
+                        f1 << b.patientName << " ";
+                        f1 << b.patientID << " ";
+                        f1 << b.dateOfBirth << " ";
+                        f1 << b.patientPayment << " ";
+                        f1 << b.insuranceType << " ";
+                        f1 << b.currentBalance << endl;
 
                     //printing details to screen 
                     cout << "\n\t\tPatient Details are following\n";
@@ -233,166 +383,47 @@ start :
                     else
                         goto start;
                     
-
-                
-               
-            
-
-                // PatientInformationCollection b;
-                // fstream f1;
-                // char ch;
-                // int book_id = 1;
-                // f1.open("booking.txt",ios::in|ios::out|ios::app|ios::binary);
-                // cout << "\t\tWelcome to Patient Information Collection\n";
-                // cout << "\t\t---------------------------\n";
-
-                //     b.getInfo();
-                //     f1.write((char *)&b , sizeof(b));
-
-                //     cout << "\n\t\tPatient Details are following\n";
-                //     cout << "\t\t-----------------------------\n";
-                //     cout.setf(ios::left);
-                //     cout <<setw(15)<< "patientName" <<setw(20)<< "patientID" <<setw(30)<< "dateOfBirth" <<setw(20)<< "patientPayment" <<setw(12)<< "insuranceType"<<setw(12)<<"Balance"<<endl;
-                //     b.disInfo();
-                    
-                // cout << "\n\t..........Information Saved...............\n";
-
-                // char c1;
-                // cout << "\tPress 'q' to terminate or any other key to return to HomeScreen :- ";
-                // cin >>c1;
-                // if(c1 == 'q' || c1 == 'Q')
-                //     exit(EXIT_FAILURE);
-                // else
-                //     goto start;
-                // f1.close();
             }
             break;
 
           case 2:
-            {
-                //vector of appointment called appointments
-                vector<Appointment> appointments;
-                fstream f2;
-                // storing appointments in appointment txt
-                f2.open("appointment.txt",ios::in|ios::out|ios::app);
-                
-                char c2 = 'Y';
-                while (c2 == 'Y' || c2 == 'y') {
-                    Appointment newAppointment;
-                    newAppointment.appointmentInfo();
+            {   
+                bookAppointment(); 
 
-                    // Check for conflicts
-                    if (hasConflict(newAppointment, appointments)) {
-                        cout << "Sorry, the selected time slot is not available. Please choose another time.\n";
-                    } else {
-                        // No conflict, add the appointment
-                        f2.write((char*)&newAppointment, sizeof(newAppointment));
-                        appointments.push_back(newAppointment);
-                        cout << "Appointment scheduled successfully!\n";
-                    }
-
-                    // Clear input buffer before prompting for further input
-                    cin.clear(); // Clear any errors
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard the input buffer
-
-                    cout << "Enter 'Y' to schedule another appointment or any other key to quit: ";
-                    //or go back to homepage 
-                    cin >> c2;
-                    
-                }
-                
+                    char c1;
+                    cout << "\tPress 'q' to terminate or any other key to return to HomeScreen :- ";
+                    cin >> c1;
+                    if (c1 == 'q' || c1 == 'Q')
+                        exit(EXIT_FAILURE);
+                    else
+                        goto start;
 
             }
             break; 
 
         case 3:
-        //include cancellation fee 
-            {
-                Appointment c; 
-                fstream f4,fr;
-                //change binary
-                f4.open("appointment.txt",ios::in|ios::out|ios::binary); 
-                fr.open("b.txt",ios::in|ios::out|ios::binary|ios::app);
-
-                char name[20];
-                cout << "Under which name do you want to delete the appointment :- ";
-                cin >> name;
-
-                f4.seekg(0,ios::beg);
-                f4.read((char*)&c,sizeof(c));
-                while (f4.eof() != 1)
-                {
-                    if(strcmp(name,c.patientName) != 0)
-                        fr.write((char *)&c,sizeof(c));
-                    f4.read((char*)&c,sizeof(c));
-                }
-
-                cout << "\n\t******Ticket Cancellation Successful******\n";
-                // charging fee for cancel
-                // c.chargeCancellationFee(); 
-                remove ("appointment.txt");
-                rename ("b.txt","appointment.txt");
-
-                f4.close();
-                fr.close();
-                char c5;
-                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
-                cin >> c5;
-
-                if(c5 == 'q'|| c5 == 'Q')
-                    exit(EXIT_FAILURE);
-                else
-                    goto start;
+            {    
+                cancelAppointment(); 
+                    char c1;
+                    cout << "\tPress 'q' to terminate or any other key to return to HomeScreen :- ";
+                    cin >> c1;
+                    if (c1 == 'q' || c1 == 'Q')
+                        exit(EXIT_FAILURE);
+                    else
+                        goto start;
             }
-            break;
+        
+        break;
 
-
-        //adjusted it so it only shows the name of one patient, we have to actually write the name 
-        //of the patient so it only prints their information and not everyone elses 
         case 4:
             {
-
-                PatientInformationCollection p;
-                int count = 0;
-                fstream f6;
-                f6.open("booking.txt",ios::in|ios::out|ios::binary);
-                f6.seekg(0,ios::beg);
-                f6.read((char *)&p,sizeof(p));
-                cout.setf(ios::left);
-                cout <<endl;
-                cout <<setw(15)<< "patientName" <<setw(20)<< "patientID" <<setw(30)<< "dateOfBirth" <<setw(20)<< "patientPayment" <<setw(12)<< "insuranceType" <<setw(30)<< "Balance"<<endl;
-
-
-                //CHANGE NAME TO TARGET SPECIFIC PATIENT 
-                string target_name = "maryam"; // Change this to the name you want to search for
-
-                while(f6)
-                {
-                    // Assuming p.getName() returns the name of the booking
-                    if (p.patientName == target_name)
-                    {
-                        p.disInfo(); // Display the booking information
-                        count++;
-                    }
-                    f6.read((char *)&p,sizeof(p));
-                }
-
-                f6.close();
-
-                // cout << "\n\tTotal Number of passengers with name "<< target_name <<" is "<<count<<endl;
-                char c6;
-                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
-                cin >> c6;
-
-                if(c6 == 'q'|| c6 == 'Q')
-                    exit(EXIT_FAILURE);
-                else
-                    goto start;
+                cout << "\t\tWelcome to Patient Details \n";
 
             }
             break;
         case 5 : 
         {
+
             //read all feedback info. read every single line
             Feedback b;
                 fstream f1;
@@ -420,6 +451,10 @@ start :
                     
                 cout << "\n\t..........Information Saved...............\n";
 
+                // Clear input buffer before prompting for further input
+                cin.clear(); // Clear any errors
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard the input buffer
+
                 char c1;
                 cout << "\tPress 'q' to terminate or any other key to return to HomeScreen :- ";
                 cin >>c1;
@@ -430,9 +465,14 @@ start :
                 f1.close();
         }
         break;
-        case 6 : {
+
+        case 6 : 
+        {
+                cout << "\t\tWelcome to Insurance Validation \n";
+                cout << "\t\t---------------------------\n";
                 PatientInformationCollection p;
                 fstream f6;
+                //REMOVE BINARY
                 f6.open("booking.txt",ios::in|ios::out|ios::binary);
                 f6.seekg(0,ios::beg);
                 f6.read((char *)&p,sizeof(p));
@@ -480,6 +520,22 @@ start :
                 else
                     goto start;
         }
+        break; 
+
+        case 7 : 
+        {
+            modifyAppointment(); 
+
+
+            char c6;
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cin >> c6;
+
+                if(c6 == 'q'|| c6 == 'Q')
+                    exit(EXIT_FAILURE);
+                else
+                    goto start;
+                    
+        }
     }
 }
-
