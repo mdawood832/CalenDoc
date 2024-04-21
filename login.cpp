@@ -4,7 +4,9 @@
 using namespace std;
 #include "authentication.h"
 
-//g++ -o main main.cpp authentication.cpp
+//g++ -o login login.cpp authentication.cpp
+//then
+// ./login
 //to run login in terminal 
 
 int main()
