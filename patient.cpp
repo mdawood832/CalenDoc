@@ -49,12 +49,9 @@ class PatientInformationCollection
             
         }
 
-
-        //display info
         void disInfo()
         {
             cout.setf(ios::left);
-            //this works 
             cout <<setw(15)<< patientName <<setw(20)<< patientID <<setw(30)<<dateOfBirth <<setw(20)<<patientPayment <<setw(30)<< insuranceType<<setw(30)<<currentBalance<<endl;
         }
 
@@ -305,10 +302,34 @@ void modifyAppointment() {
     }
 }
 
+void searchPatient(const std::string& name, std::ifstream& file) {
+    std::string patientName, patientID, dob, phoneNumber, insurance;
+    bool found = false;
+
+    while (file >> patientName >> patientID >> dob >> phoneNumber >> insurance) {
+        if (patientName == name) {
+            found = true;
+            std::cout << "Name: " << patientName << std::endl;
+            std::cout << "ID: " << patientID << std::endl;
+            std::cout << "Date of Birth: " << dob << std::endl;
+            std::cout << "Phone Number: " << phoneNumber << std::endl;
+            std::cout << "Insurance: " << insurance << std::endl;
+            break;
+        }
+    }
+
+    if (!found) {
+        std::cout << "Patient not found." << std::endl;
+    }
+}
+
+
+
+
 
 int main()
 {
-start :
+start: 
     cout << "*********************************************************************\n";
     cout <<"..............CalenDoc Patient Interface ............\n";
     cout << "*********************************************************************\n";
@@ -321,7 +342,7 @@ start :
         cout << "\t1. Patient Information Collection\n";
         cout << "\t2. Schedule an Appointment\n";
         cout << "\t3. Cancel an Appointment\n";
-        cout << "\t4. Patient Details\n"; //does not work
+        cout << "\t4. Search Patient Info\n"; 
         cout << "\t5. Submit Feedback\n";
         cout << "\t6. Insurance Validation\n";
         cout << "\t7. Modify Patient Info\n";
@@ -334,6 +355,8 @@ start :
             k++;
         }
     }while (k != 0);
+
+
 
     switch (choice)
     {
@@ -368,20 +391,22 @@ start :
                     cout << "\n\t\tPatient Details are following\n";
                     cout << "\t\t-----------------------------\n";
                     cout.setf(ios::left);
-                    cout << setw(15) << "patientName" << setw(20) << "patientID" << setw(30) << "dateOfBirth" << setw(20) << "patientPayment" << setw(12) << "insuranceType" << setw(12) << "Balance" << endl;
+                    cout << setw(15) << "patientName" << setw(20) << "patientID" << setw(30) << "dateOfBirth" << setw(20) << "patientPayment" << setw(12) << "insuranceType" << setw(30) << "Balance" << endl;
                     b.disInfo();
 
                     cout << "\n\t..........Information Saved...............\n";
                     tag = false; 
                 } while (tag);
 
-                    char c1;
-                    cout << "\tPress 'q' to terminate or any other key to return to HomeScreen :- ";
-                    cin >> c1;
-                    if (c1 == 'q' || c1 == 'Q')
-                        exit(EXIT_FAILURE);
-                    else
-                        goto start;
+                char c6;
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cin >> c6;
+
+                if(c6 == 'q'|| c6 == 'Q')
+                    exit(EXIT_FAILURE);
+                else
+                    goto start;
+
                     
             }
             break;
@@ -404,6 +429,8 @@ start :
         case 3:
             {    
                 cancelAppointment(); 
+
+                
                     char c1;
                     cout << "\tPress 'q' to terminate or any other key to return to HomeScreen :- ";
                     cin >> c1;
@@ -418,6 +445,28 @@ start :
         case 4:
             {
                 cout << "\t\tWelcome to Patient Details \n";
+                std::ifstream inputFile("booking.txt");
+
+                if (!inputFile) {
+                    std::cerr << "Error opening file." << std::endl;
+                    return 1;
+                }
+
+                std::string searchName;
+                std::cout << "Enter the name of the patient to search: ";
+                std::cin >> searchName;
+
+                searchPatient(searchName, inputFile); // Pass inputFile here
+
+                inputFile.close();
+
+                char c1;
+                    cout << "\tPress 'q' to terminate or any other key to return to HomeScreen :- ";
+                    cin >> c1;
+                    if (c1 == 'q' || c1 == 'Q')
+                        exit(EXIT_FAILURE);
+                    else
+                        goto start;
 
             }
             break;
@@ -525,9 +574,7 @@ start :
         case 7 : 
         {
             modifyAppointment(); 
-
-
-            char c6;
+                char c6;
                 cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
                 cin >> c6;
 
@@ -539,3 +586,5 @@ start :
         }
     }
 }
+
+ 
