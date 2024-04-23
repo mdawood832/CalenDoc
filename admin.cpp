@@ -59,12 +59,19 @@ void chargePatient() {
                        
                     }
                 }
+
+                // display output
                 cout << "\nCard Number: " << searchName << endl;
                 cout << name << " has been charged.\n" << endl; 
                 found = true;
                 break;
             }
         }
+    }
+
+    if (!found)
+    {
+        cout << "No charges found.\n";
     }
     
     // Close the file

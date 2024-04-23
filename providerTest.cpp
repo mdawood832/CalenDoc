@@ -1,41 +1,39 @@
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include <string>
 
 using namespace std;
 
 int main() {
     string name;
-    cout << "Enter a name: ";
-    getline(cin, name);
+    cout << "Enter name to search for: ";
+    getline(cin, name); // Get the name from the user
 
-    ifstream inputFile("data.txt");
-
-    if (!inputFile.is_open()) {
-        cout << "Error opening file!" << endl;
+    ifstream inputFile("completedAppts.txt"); // Open the file
+    if (!inputFile) {
+        cerr << "Error opening file!" << endl;
         return 1;
     }
 
     string line;
-    while (getline(inputFile, line)) {
-        stringstream ss(line);
-        string token;
-        int colonCount = 0;
-
-        while (getline(ss, token, ':')) {
-            colonCount++;
-            if (colonCount == 1 && token == name) {
-                getline(ss, token, ':'); // Skip the next token
-                if (!getline(ss, token, ':')) // Get the token after the second colon
-                    break;
-                cout << "String after the second colon for " << name << ": " << token << endl;
-                break;
+    bool found = false;
+    while (getline(inputFile, line)) { // Read each line of the file
+        size_t pos = line.find(name); // Search for the name in the line
+        if (pos != string::npos) { // If name is found in the line
+            size_t colonPos = line.find(':', pos + name.length()); // Find the position of the second colon
+            if (colonPos != string::npos) {
+                string data = line.substr(colonPos + 1); // Get the substring after the second colon
+                cout << data << endl;
+                found = true;
+                break; // No need to search further
             }
         }
     }
 
-    inputFile.close();
+    if (!found) {
+        cout << "Name not found or data not available." << endl;
+    }
 
+    inputFile.close(); // Close the file
     return 0;
 }
