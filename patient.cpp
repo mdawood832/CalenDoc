@@ -95,12 +95,7 @@ void patientInformationCollection () {
                 bool tag = true; 
                 do {
                     b.getInfo();
-                        f1 << b.patientName << " ";
-                        f1 << b.patientID << " ";
-                        f1 << b.dateOfBirth << " ";
-                        f1 << b.patientPayment << " ";
-                        f1 << b.insuranceType << " ";
-                        f1 << b.currentBalance << endl;
+  
 
                     //printing details to screen 
                     cout << "\n\t\tPatient Details are following\n";
@@ -896,6 +891,7 @@ start:
         cout << "\t3. Cancel an Appointment\n";
         cout << "\t4. Submit Feedback\n";
         cout << "\t5. Insurance Validation\n";
+        cout << endl;
 
         cout << "Please Enter your Preferred Choice :- ";
         cin >> choice;
