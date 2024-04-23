@@ -1,5 +1,3 @@
-
-//g++ -o login login.cpp authentication.cpp
-//then
-// ./login
-//to run login in terminal 
+        // if (!found) {
+        //     std::cout << "Patient not found." << std::endl;
+        // }
