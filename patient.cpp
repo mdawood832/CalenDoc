@@ -879,8 +879,7 @@ void goToStart(){
                     main(); 
 }
 
-int main()
-{
+void displayMenuPatient(){
 start: 
     cout << "*********************************************************************\n";
     cout <<"..............CalenDoc Patient Interface ............\n";
@@ -948,6 +947,12 @@ start:
         break; 
 
     }
+}
+
+
+int main()
+{
+    displayMenuPatient(); 
 }
 
  
