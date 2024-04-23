@@ -13,7 +13,7 @@ int main()
 {
 start :
     cout << "*********************************************************************\n";
-    cout <<"..............CalenDoc Patient Interface ............\n";
+    cout <<"..............CalenDoc Admin Interface ............\n";
     cout << "*********************************************************************\n";
     int k = 0;
     int choice;
@@ -21,14 +21,13 @@ start :
     {
         cout << "\tChoose Option From Menu (1-5) \n";
         cout << "--------------------------------------------------------------------\n";
-        cout << "\t1. Patient Information Collection\n";
-        cout << "\t2. Schedule an Appointment\n";
-        cout << "\t3. Cancel an Appointment\n";
+        cout << "\t1. Charge Patient Copay\n";
+
    
 
         cout << "Please Enter your Preferred Choice :- ";
         cin >> choice;
-        if(choice<1 || choice >7)
+        if(choice<1 || choice >1)
         {
             cout << "\nInvalid Choice . Please Try Again .\n";
             k++;

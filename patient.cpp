@@ -9,7 +9,6 @@
 using namespace std;
 
 
-
 class PatientInformationCollection
 {
     public :
@@ -360,7 +359,7 @@ start:
         cout << "\t4. Search Patient Info\n"; 
         cout << "\t5. Submit Feedback\n";
         cout << "\t6. Insurance Validation\n";
-        cout << "\t7. Modify Patient Info\n";
+        cout << "\t7. Modify Appointment Info\n";
 
         cout << "Please Enter your Preferred Choice :- ";
         cin >> choice;
@@ -377,7 +376,6 @@ start:
     {
         case 1:  
             {
-
                 PatientInformationCollection b;
                 fstream f1;
                 char ch;
@@ -446,13 +444,10 @@ start:
                 std::string searchName;
                 std::cout << "Enter the name of the patient to search: ";
                 std::cin >> searchName;
-
-                searchPatient(searchName, inputFile); // Pass inputFile here
-
+                searchPatient(searchName, inputFile); 
                 inputFile.close();
 
-            goToStart(); 
-
+                goToStart(); 
             }
             break;
         case 5 : 
