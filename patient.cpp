@@ -24,21 +24,21 @@ class PatientInformationCollection
 
     void getInfo()
     {
-            cout << "Enter Patient's Name: ";
+            cout << "Enter Patient's Name: "; 
             cin.get();
-            cin >> patientName; 
+            cin >> patientName; // HAYDEN: convert to all lower or upper
 
             cout << "Enter Patient ID: ";
             cin >> patientID;
 
-            cout << "Date of Birth( DD/MM/YYYY): ";
-            cin >> dateOfBirth;
+            cout << "Date of Birth( DDMMYYYY): ";
+            cin >> dateOfBirth; // HAYDEN: make sure it's 8 characters
 
             cout << "Enter your Credit Card Number: ";
-            cin >> patientPayment;
+            cin >> patientPayment; //HAYDEN: 15 digit credit card number 
 
-            cout <<"Enter your Insurance Type (alien, zombie, unicorn, other): ";
-            cin >> insuranceType;
+            cout <<"Enter your Insurance Type (alien, zombie, unicorn): ";
+            cin >> insuranceType; // HAYDEN: make sure it's these 3 options
 
             ofstream out; 
             out.open("patientInfo.txt", ios::app); 

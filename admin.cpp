@@ -8,6 +8,12 @@
 #include <sstream>
 using namespace std;
 
+//charge patient copay 
+//reset weekly earnings 
+//admin cancel app. (copy)
+//admin schedule app. (copy)
+//clears day text files 
+
 
 int main()
 {
