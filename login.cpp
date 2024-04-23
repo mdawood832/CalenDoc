@@ -1,13 +1,14 @@
 
 #include<iostream>
+#include <fstream> 
+#include <string> 
 
 using namespace std;
 #include "authentication.h"
 
-//g++ -o login login.cpp authentication.cpp
-//then
-// ./login
-//to run login in terminal 
+
+//input validation for ID number make sure its only five digits 
+//
 
 int main()
 {

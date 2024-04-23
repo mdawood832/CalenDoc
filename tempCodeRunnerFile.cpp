@@ -1,3 +1,1 @@
-        // if (!found) {
-        //     std::cout << "Patient not found." << std::endl;
-        // }
+g++ -o login login.cpp authentication.cpp
