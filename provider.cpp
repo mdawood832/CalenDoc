@@ -71,7 +71,6 @@ void displayAllPatients(){
         }
 
         // Display the values
-        cout << "Line: " << line << endl;
         if (values.size() >= 5) {
             // Extract individual values
             string name = values[0];
@@ -84,8 +83,8 @@ void displayAllPatients(){
             cout << "Name: " << name << endl;
             cout << "ID Number: " << id_number << endl;
             cout << "Date of Birth: " << dob << endl;
-            cout << "Phone: " << phone << endl;
-            cout << "Species: " << species << endl;
+            cout << "Credit Card Number: " << phone << endl;
+            cout << "Insurance: " << species << endl;
         } else {
             cout << "Invalid line format" << endl;
         }
@@ -96,6 +95,60 @@ void displayAllPatients(){
 
     file.close();
 
+}
+
+void displayAllFeedback(){
+    ifstream file("feedback.txt");
+    string line;
+
+    // Read each line
+    while (getline(file, line)) {
+        // Check if the line starts with "Name: "
+        if (line.find("Name: ") == 0) {
+            // Extract name
+            string name = line.substr(6);
+
+            // Read ID, Date, and Rating from the next three lines
+            string id, date, rating;
+            getline(file, line); // Read ID line
+            id = line.substr(4);
+
+            getline(file, line); // Read Date line
+            date = line.substr(6);
+
+            getline(file, line); // Read Rating line
+            rating = line.substr(8);
+
+            // Display the feedback
+            cout << "Name: " << name << endl;
+            cout << "ID: " << id << endl;
+            cout << "Date: " << date << endl;
+            cout << "Rating: " << rating << endl;
+            cout << "---------------------------" << endl;
+        }
+    }
+
+    // Close the file
+    file.close();
+
+}
+
+void weeklyCopay(){
+    ifstream file("weeklyCopay.txt");
+    string line;
+    int sum = 0;
+
+    // Read each line
+    while (getline(file, line)) {
+        // Convert the line to an integer and add it to the sum
+        sum += stoi(line);
+    }
+
+    // Close the file
+    file.close();
+
+    // Display the sum
+    cout << "Th weekly copay is : $ " << sum << endl;
 }
 
 void displayProviderMenu(){
@@ -112,8 +165,8 @@ start:
         cout << "\t1. View all Patients \n";
         cout << "\t2. View all Feedback\n";
         cout << "\t3. Check Weekly Copay\n";
-        cout << "\t4. Confirm Appointment Status";
-        cout << "\t5. View Provider Information";
+        cout << "\t4. Confirm Appointment Status\n";
+        cout << "\t5. View Provider Information" <<endl; 
         cout << "Please Enter your Preferred Choice :- ";
         cin >> choice;
         if(choice<1 || choice >5)
@@ -133,6 +186,7 @@ start:
 
           case 2:
             {   
+                displayAllFeedback();
                 goToStart(); 
 
             }
@@ -140,6 +194,7 @@ start:
 
         case 3:
             {    
+                weeklyCopay();
                 goToStart(); 
             }
         break;
