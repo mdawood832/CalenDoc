@@ -1,1 +1,1 @@
-g++ -o login login.cpp authentication.cpp
+ main();

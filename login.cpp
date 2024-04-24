@@ -7,9 +7,6 @@ using namespace std;
 #include "authentication.h"
 
 
-//input validation for ID number make sure its only five digits 
-//
-
 int main()
 {
         int c;   
@@ -29,7 +26,7 @@ int main()
         {
                 case 1:
                         login();
-                        main();
+
                 case 2:
                         registration();
                         main(); 
