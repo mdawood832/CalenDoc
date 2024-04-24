@@ -10,17 +10,18 @@ using namespace std;
 int main()
 {
         int c;   
-        cout<<"\t\t\t__________________________________________________________________________\n\n\n";
-        cout<<"\t\t\t                     Welcome to the Login page                               \n\n";
-        cout<<"\t\t\t______________________        MENU        ________________________________\n\n";
+    cout << "*********************************************************************\n";
+    cout <<".........................Login Page ..................................\n";
+    cout << "*********************************************************************\n";
         cout<<"                                                                                \n\n";
-        cout<<"\t|  Press 1 to LOGIN                    |"<<endl;
-        cout<<"\t|  Press 2 to REGISTER                 |"<<endl;
-        cout<<"\t|  Press 3 if you forgot your PASSWORD |"<<endl;
-        cout<<"\t|  Press 4 to Exit                     |"<<endl;
-        cout<<"\n\t\t\tPlease Enter your choice :";
+        cout<<"  Press 1 to LOGIN                    "<<endl;
+        cout<<"  Press 2 to REGISTER                 "<<endl;
+        cout<<"  Press 3 if PASSWORD RECOVERY        "<<endl;
+        cout<<"  Press 4 to EXIT                   \n "<<endl;
+        cout<<"  Please Enter your choice :   " ; 
         cin>>c;
-        cout<<endl;
+        cout << endl; 
+
 
         switch(c)
         {
@@ -34,10 +35,10 @@ int main()
                         forgot();
                         main(); 
                 case 4:
-                        cout<<"\t\t\tThankyou!\n\n";
+                        cout<<"Thankyou!\n\n";
                         break; 
                 default:
-                        cout<<"\t\t\tPlease select from the options given above , Try again..\n"<<endl;
+                        cout<<"Please select from the options given above , Try again..\n"<<endl;
                         main();
         }
 

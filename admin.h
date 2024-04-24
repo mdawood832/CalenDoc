@@ -9,6 +9,11 @@
 using namespace std;
 
 
+
+
+
+
+
 void scheduleAppointments(){
 
 start :
@@ -23,7 +28,7 @@ start :
     int userChoice;
 
     cout << endl;
-    cout << "Select a Day: ";
+    cout << "Select a Day (1-5): ";
     cin >> userChoice;
 
     cout << "\n ----- Book Your Appointment ---- \n";	
@@ -126,7 +131,7 @@ start :
     cout << "5. Friday" << endl;
 
     cout << endl;
-    cout << "Select a Day: ";
+    cout << "Select a Day (1-5): ";
     cin >> userChoice;
 
     bookAppointments();
@@ -189,13 +194,17 @@ start :
         if(out){
             out<<choice<<":"<<name.c_str()<<"\n";
             out.close();
-            cout<<"\n Appointment booked for Hours : "<< (choice-65) + 9 <<" successfully !!";
+            cout<<"\n Appointment booked for Hours : "<< (choice-65) + 9 <<" successfully !!"<<endl;
+            
         }
         else{
             cout<<"\n Error while saving booking";
         }
 
+
         out.close();
+
+        
 
 
 }
@@ -562,7 +571,11 @@ void resetEarnings()
     
 }
 
+
+
 void displayAdminMenu(){
+
+
 start: 
     cout << "*********************************************************************\n";
     cout <<"..............CalenDoc Admin Interface ............\n";
@@ -600,7 +613,14 @@ start:
         case 1:  
             {
                 chargePatient();
-                goToStart();
+                char c;
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cin >> c;
+
+                if(c == 'q'|| c == 'Q')
+                    exit(EXIT_FAILURE);
+                else
+                    displayAdminMenu(); 
 
             }
         break;
@@ -608,28 +628,56 @@ start:
         case 2:  
             {
                 scheduleAppointments();
-                goToStart();
+                char c;
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cin >> c;
+
+                if(c == 'q'|| c == 'Q')
+                    exit(EXIT_FAILURE);
+                else
+                    displayAdminMenu(); 
 
             } 
         break;
 
         case 3: 
         {       cancelTheAppointment();
-                goToStart(); 
+                                char c;
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cin >> c;
+
+                if(c == 'q'|| c == 'Q')
+                    exit(EXIT_FAILURE);
+                else
+                    displayAdminMenu(); 
         }
         break;
 
         case 4: 
         {
                 resetAppointmentFiles(); 
-                goToStart();
+                                char c;
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cin >> c;
+
+                if(c == 'q'|| c == 'Q')
+                    exit(EXIT_FAILURE);
+                else
+                    displayAdminMenu(); 
         }
         break;
 
         case 5: 
         {
                 resetEarnings(); 
-                goToStart();
+                                char c;
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cin >> c;
+
+                if(c == 'q'|| c == 'Q')
+                    exit(EXIT_FAILURE);
+                else
+                    displayAdminMenu(); 
         }
         break;
 
@@ -639,5 +687,8 @@ start:
     }
 
 }
+
+
+
 
 

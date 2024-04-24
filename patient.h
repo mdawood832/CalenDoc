@@ -860,18 +860,6 @@ void validateInsurance(){
                     }
 }
 
-int main(); 
-
-void goToStart(){
-                char c6;
-                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
-                cin >> c6;
-
-                if(c6 == 'q'|| c6 == 'Q')
-                    exit(EXIT_FAILURE);
-                else
-                    main(); 
-}
 
 void displayMenuPatient(){
 start: 
@@ -905,14 +893,28 @@ start:
         case 1:  
             {
                 patientInformationCollection(); 
-                goToStart(); 
+                char c;
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cin >> c;
+
+                if(c == 'q'|| c == 'Q')
+                    exit(EXIT_FAILURE);
+                else
+                    displayMenuPatient();  
             }
             break;
 
           case 2:
             {   
                 bookAppointments(); 
-                goToStart(); 
+                char c;
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cin >> c;
+
+                if(c == 'q'|| c == 'Q')
+                    exit(EXIT_FAILURE);
+                else
+                    displayMenuPatient();  
 
             }
             break; 
@@ -920,7 +922,14 @@ start:
         case 3:
             {    
                 cancelAppointment(); 
-                goToStart(); 
+                char c;
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cin >> c;
+
+                if(c == 'q'|| c == 'Q')
+                    exit(EXIT_FAILURE);
+                else
+                    displayMenuPatient();  
             }
         break;
 
@@ -928,7 +937,14 @@ start:
             {
 
                 getFeedback(); 
-                goToStart(); 
+                char c;
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cin >> c;
+
+                if(c == 'q'|| c == 'Q')
+                    exit(EXIT_FAILURE);
+                else
+                    displayMenuPatient();  
             }
         break;
 
@@ -936,7 +952,14 @@ start:
             {
 
                 validateInsurance(); 
-                goToStart(); 
+                char c;
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cin >> c;
+
+                if(c == 'q'|| c == 'Q')
+                    exit(EXIT_FAILURE);
+                else
+                    displayMenuPatient();  
             }
         break; 
 
