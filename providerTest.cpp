@@ -1,39 +1,58 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <algorithm> // for transform
+#include <sstream>
 
 using namespace std;
 
-int main() {
-    string name;
-    cout << "Enter name to search for: ";
-    getline(cin, name); // Get the name from the user
-
-    ifstream inputFile("completedAppts.txt"); // Open the file
-    if (!inputFile) {
-        cerr << "Error opening file!" << endl;
-        return 1;
-    }
-
+void removeLineWithMatchingName(const string& name, ifstream& inputFile, ofstream& outputFile) {
     string line;
-    bool found = false;
-    while (getline(inputFile, line)) { // Read each line of the file
-        size_t pos = line.find(name); // Search for the name in the line
-        if (pos != string::npos) { // If name is found in the line
-            size_t colonPos = line.find(':', pos + name.length()); // Find the position of the second colon
-            if (colonPos != string::npos) {
-                string data = line.substr(colonPos + 1); // Get the substring after the second colon
-                cout << data << endl;
-                found = true;
-                break; // No need to search further
+    bool nameFound = false;
+
+    while (getline(inputFile, line)) {
+        string currentName;
+        istringstream iss(line);
+        if (getline(iss, currentName, ':')) {
+            transform(currentName.begin(), currentName.end(), currentName.begin(), ::tolower);
+            if (currentName != name) {
+                outputFile << line << endl;
+            } else {
+                nameFound = true;
             }
         }
     }
 
-    if (!found) {
-        cout << "Name not found or data not available." << endl;
+    if (!nameFound) {
+        cout << "Name not found in the file." << endl;
+    }
+}
+
+int main() {
+    string name;
+    cout << "Enter a name to search for: ";
+    getline(cin, name);
+
+    // Open input file
+    ifstream inputFile("completedAppts.txt");
+    if (!inputFile) {
+        cerr << "Error opening input file!" << endl;
+        return 1;
     }
 
-    inputFile.close(); // Close the file
+    // Open output file
+    ofstream outputFile("records.txt");
+    if (!outputFile) {
+        cerr << "Error opening output file!" << endl;
+        inputFile.close();
+    }
+
+    // Remove lines with matching name from input file and copy to output file
+    removeLineWithMatchingName(name, inputFile, outputFile);
+
+    // Close files
+    inputFile.close();
+    outputFile.close();
+
     return 0;
 }
