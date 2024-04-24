@@ -4,3 +4,4 @@ vi:canceled:200.00
 lucy:completed:100.00
 jane:late:150.00
 vi:late:150.00
+vi:completed:100.00

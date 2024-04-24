@@ -5,15 +5,14 @@
 #include <random>
 #include "patient.h"
 #include "admin.h"
-
-//make sure admin can go back to start
+#include "provider.h"
 
 void switchDisplays(int firstNum) {
 
         if (firstNum == 1) {
             displayMenuPatient(); 
         } else if (firstNum == 2) {
-            cout << "ID starts with 2 (Provider)" << endl;
+            displayProviderMenu(); 
         } else if (firstNum == 3) {
             displayAdminMenu(); 
         } 
