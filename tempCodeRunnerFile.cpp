@@ -1,1 +1,1 @@
- main();
+displayAdminMenu(); 

@@ -9,6 +9,8 @@
 using namespace std;
 
 
+//save info to providerInfo.txt
+
 int main(); 
 
 void goToStart(){
@@ -27,7 +29,6 @@ class ProviderInformationCollection
     public :
         char providerName[20];
         int providerID;
-        int coPay; 
 
         void getInfo()
         {
@@ -40,13 +41,10 @@ class ProviderInformationCollection
         }
 
         void disInfo(){
-            //copy from patient.cpp
+            
+            cout.setf(ios::left);
+            cout <<setw(15)<< providerName <<setw(20)<< providerID <<endl;
 
-        }
-
-        void calculateWeeklyCopay(){
-            // totalWeeklyCoPay = numberOfAppointments * providerRate;
-            //we get weekly visit count from appointments.txt            
         }
 
 
@@ -151,6 +149,18 @@ void weeklyCopay(){
     cout << "Th weekly copay is : $ " << sum << endl;
 }
 
+void confirmApp(){
+    
+
+}
+
+
+
+
+
+
+
+
 void displayProviderMenu(){
 start: 
     cout << "*********************************************************************\n";
@@ -166,10 +176,9 @@ start:
         cout << "\t2. View all Feedback\n";
         cout << "\t3. Check Weekly Copay\n";
         cout << "\t4. Confirm Appointment Status\n";
-        cout << "\t5. View Provider Information" <<endl; 
-        cout << "Please Enter your Preferred Choice :- ";
+        cout << "Please Enter your Preferred Choice : ";
         cin >> choice;
-        if(choice<1 || choice >5)
+        if(choice<1 || choice >4)
         {
             cout << "\nInvalid Choice . Please Try Again .\n";
             k++;
@@ -201,18 +210,10 @@ start:
 
         case 4 : 
             {
-
+                confirmApp(); 
                 goToStart(); 
             }
         break;
-
-        case 5 : 
-            {
-
-
-                goToStart(); 
-            }
-        break; 
 
     }
 }
