@@ -93,7 +93,7 @@ void chargePatient() {
             if (searchName == name) {
 
                 // searching for card number 
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < 4; i++) {
                     if (!getline(iss, searchName, ':')) {
                         cout << "Error: Unable to read data." << endl;
                        
@@ -111,8 +111,8 @@ void chargePatient() {
 
     file.close();
 
-  ifstream infile("completedAppts.txt");
-   ofstream outfile("temp.txt");
+   ifstream infile("completedAppts.txt");
+    ofstream outfile("temp.txt");
 
 
         // Read each line from the file
@@ -205,7 +205,7 @@ void resetAppointmentFiles()
 
 void resetEarnings()
 {
-    
+
 }
 
 
@@ -260,3 +260,4 @@ int main()
 
     return 0;
 }
+

@@ -1,3 +1,6 @@
-maryam:canceled:25.00
-vi:late:45.30
-hayden:completed:25.66
+jay:complete:243.50
+barb:complete:26.55
+vi:canceled:200.00
+lucy:completed:100.00
+jane:late:150.00
+vi:late:150.00
