@@ -1,14 +1,21 @@
+//Maryam Dawood
+//login.cpp
+//Written 04/14/2024
+//login interface for patient,provider,admin
+//allows user to choose their menu option and calls
+//on respective functions in authentication.h
 
 #include<iostream>
 #include <fstream> 
 #include <string> 
 
 using namespace std;
+//login functions saved in this header file
 #include "authentication.h"
-
 
 int main()
 {
+        //display menu and get use choice 
         int c;   
     cout << "*********************************************************************\n";
     cout <<".........................Login Page ..................................\n";
@@ -22,7 +29,7 @@ int main()
         cin>>c;
         cout << endl; 
 
-
+        //switch statements for user's choice 
         switch(c)
         {
                 case 1:

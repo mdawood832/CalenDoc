@@ -48,7 +48,7 @@ class PatientInformationCollection
             cout << "Enter your Credit Card Number: ";
             cin >> patientPayment; 
 
-            cout <<"Enter your Insurance Type (alien, zombie, unicorn): ";  // placeholder names for insurance types
+            cout <<"Enter your Insurance Type (alien, zombie, unicorn): ";  
             cin >> insuranceType; 
 
             ofstream out; 
@@ -61,6 +61,7 @@ class PatientInformationCollection
         
     }
 
+    //display the information user entered 
         void disInfo()
         {
             cout.setf(ios::left);
@@ -71,11 +72,14 @@ class PatientInformationCollection
 
 };
 
+//creates an instance of class patientinformation collection and opens patientInfo.txt
+//calls getInfo() from patientInformationCollection to get user's information. 
+//uses disInfo() from patientInformationCollection to display patients details in structured format
+//displays to the user that their information was saved 
+
 void patientInformationCollection () {
                PatientInformationCollection b;
                 fstream f1;
-                char ch;
-                int book_id = 1;
                 
                 cout << "\t\tWelcome to Patient Information Collection\n";
                 cout << "\t\t---------------------------\n";
@@ -101,6 +105,8 @@ void patientInformationCollection () {
                 } while (tag);
 }
 
+
+//class feedback that collects the user's feedback information: name, ID, date, and rating. 
 class Feedback
 {
     public :
@@ -125,12 +131,13 @@ class Feedback
             cin >> rating;
         }
 
+        //displays attributes 
         void disInfo(){
             cout <<setw(15)<< patientName <<setw(20)<< patientID <<setw(30)<< date <<setw(20)<< rating <<endl;
         }
 };
 
-std::string dayofWeek(char day) {
+string dayofWeek(char day) {
     
     if (day == 'A')
         return "Monday";
@@ -148,6 +155,7 @@ std::string dayofWeek(char day) {
      return "Friday";
 }
 
+//function to display appointments available from monday to friday 
 void viewAppointments() {
 
 
@@ -248,10 +256,19 @@ void viewAppointments() {
 
     }
 
+    char bookAnother;
+    //input validation for yes or no question 
+     do {
+        cout << "\n\nWould you like to see other appointments?\n" <<endl;
+        cout << "Enter y or n: ";
+        cin >> bookAnother;
+
+
+        if (bookAnother != 'Y' && bookAnother != 'N' && bookAnother != 'n' && bookAnother != 'y' ) {
+            cout << "Invalid input. Please enter 'Y' or 'N'." <<endl;
+        }
+    } while (bookAnother != 'Y' && bookAnother != 'N' && bookAnother != 'n' && bookAnother != 'y' );
     cout << endl;
-    cout << "\n\nWould you like to see other appointments?\n" << endl;
-    cout << "Enter y or n: ";
-    cin >> bookAnother;
 
     while (bookAnother == 'y' || bookAnother == 'Y')
 {
@@ -262,8 +279,8 @@ return;
 
 };
 
+//prompts the user to select an appointment day from monday-tuesday
 void bookAppointments(){
-
 start :
     cout << "Select an Appointment Day\n";
     cout << "-------------------------\n";
@@ -276,8 +293,14 @@ start :
     int userChoice;
 
     cout << endl;
-    cout << "Select a Day: ";
+    cout << "Select a Day(1-5): ";
+    //input validation for day selection 
     cin >> userChoice;
+        if(userChoice<1 || userChoice >5)
+        {
+            cout << "\nInvalid Choice . Please Try Again .\n";
+            goto start; 
+        }
 
     cout << "\n ----- Book Your Appointment ---- \n";	
     cout << "\n ----- Availbale slots ---- \n";	 
@@ -363,15 +386,26 @@ start :
     }
 
     char seeAnother;
-    cout << endl;
-    cout << "\n\nWould you like to see other appointments?\n" << endl;
-    cout << "Enter y or n: ";
-    cin >> seeAnother;
+    //input validation for yes or no question 
+     do {
+        cout << "\n\nWould you like to see other appointments?\n" <<endl;
+        cout << "Enter y or n: ";
+        cin >> seeAnother;
 
-    while (seeAnother == 'y' || seeAnother == 'Y')
+
+        if (seeAnother != 'Y' && seeAnother != 'N' && seeAnother != 'n' && seeAnother != 'y' ) {
+            cout << "Invalid input. Please enter 'Y' or 'N'." <<endl;
+        }
+    } while (seeAnother != 'Y' && seeAnother != 'N' && seeAnother != 'n' && seeAnother != 'y' );
+    cout << endl;
+
+//if the user wants to see other appointments display appointments 
+    if(seeAnother == 'y' || seeAnother == 'Y')
 {
     goto start;
 }
+
+    //input validation for appointment time 
     char choice;
     cout<<"Input your desired appointment time: ";
     cin>>choice;
@@ -426,6 +460,7 @@ start :
             out<<choice<<":"<<name.c_str()<<"\n";
             out.close();
             cout<<"\n Appointment booked for Hours : "<< (choice-65) + 9 <<" successfully !!";
+           exit(0); 
         }
         else{
             cout<<"\n Error while saving booking";
@@ -433,6 +468,7 @@ start :
 
         out.close();
 
+     
 
 }
 
@@ -720,6 +756,11 @@ int bookAppointment(){
         return 0;
 }
 
+//Creates an instance of the class Feedback called b. Opens the file called feedback.txt.
+//Call getFeedback function from class Feedback to collect the user's information. 
+//Write the feedback to feedback.txt in the structured format. Print the feedback to the user. 
+//Display to the user that their feedback was saved. 
+
 void getFeedback(){
             //read all feedback info. read every single line
             Feedback b;
@@ -753,6 +794,13 @@ void getFeedback(){
                 cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard the input buffer
 }
 
+//allows patient to change their appointment 
+//ask user to enter their name they saved the appointment under 
+//if name is found under appointments.txt, we allow the user to 
+//enter their new appointment in the correct format. The program will 
+//print the message that the appointment was successfully modified. 
+//If the user's name was not found the program will print that the 
+//appointment was not found 
 void modifyAppointment() {
     string name;
     cout << "Enter your name to modify appointment: ";
@@ -796,6 +844,11 @@ void modifyAppointment() {
     }
 }
 
+//will ask the user to enter what type of insurance they have. Will go 
+//through the accepted insurances array and compare input with the array items. 
+//If the input matches one of the insurance types we set count to 1. 
+//If count = 1, we print "insurance is accpeted"
+//If count - 0, we print "your insurance is NOT accepeted"
 void validateInsurance(){
         cout << "\t\tWelcome to Insurance Validation \n";
         cout << "\t\t---------------------------\n";
@@ -819,6 +872,10 @@ void validateInsurance(){
 }
 
 
+
+//displays the menu for the patient. First prints out menu items then prompts the user to enter their choice. 
+//if the user does not enter a number between 1 and 5 then the program will prompt the user to enter a valid choice. 
+//We used a switch statement to manuver between menu options. 
 void displayMenuPatient(){
 start: 
     cout << "*********************************************************************\n";
@@ -848,6 +905,8 @@ start:
 
     switch (choice)
     {
+        //calling patientInformation collection function. Followed by the choice to quit entirely or to go 
+        //back to the patient menu. 
         case 1:  
             {
                 patientInformationCollection(); 
@@ -861,7 +920,8 @@ start:
                     displayMenuPatient();  
             }
             break;
-
+        //calling bookAppointments function. Followed by the choice to quit entirely or to go 
+        //back to the patient menu. 
           case 2:
             {   
                 bookAppointments(); 
@@ -877,6 +937,8 @@ start:
             }
             break; 
 
+        //calling cancelAppointments function. Followed by the choice to quit entirely or to go 
+        //back to the patient menu. 
         case 3:
             {    
                 cancelAppointment(); 
@@ -891,6 +953,8 @@ start:
             }
         break;
 
+        //calling getFeedback function. Followed by the choice to quit entirely or to go 
+        //back to the patient menu.
         case 4 : 
             {
 
@@ -905,7 +969,8 @@ start:
                     displayMenuPatient();  
             }
         break;
-
+        //calling validateInsurance function. Followed by the choice to quit entirely or to go 
+        //back to the patient menu.
         case 5 : 
             {
 

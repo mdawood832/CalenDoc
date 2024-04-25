@@ -7,7 +7,6 @@
 // login functionality, registration, and password recovery. 
 
 
-
 #include <iostream>
 #include <fstream> 
 #include <string> 
@@ -39,7 +38,7 @@ void switchDisplays(int firstNum) {
 //of the id to switchDisplays() to display the respective interface. 
 //ELSE: the info entered does not match and we display error message 
 void login() {
-
+start: 
     int count = 0;
     string  password, pass; 
     string userId, id; 
@@ -65,6 +64,7 @@ void login() {
     
     } else {
         cout << "\nLOGIN ERROR\nPlease check your username and password\n";
+        goto start; 
     }
 }
 
@@ -187,8 +187,5 @@ void forgot(){
             {
                 cout<<"\n\tSorry, Account not found! \n";
             }
-            
-    
-
     
 }
