@@ -155,7 +155,7 @@ string dayofWeek(char day) {
      return "Friday";
 }
 
-//function to display appointments available from monday to friday 
+
 void viewAppointments() {
 
 
@@ -256,19 +256,10 @@ void viewAppointments() {
 
     }
 
-    // char bookAnother;
-    // //input validation for yes or no question 
-    //  do {
-    //     cout << "\n\nWould you like to see other appointments?\n" <<endl;
-    //     cout << "Enter y or n: ";
-    //     cin >> bookAnother;
-
-
-    //     if (bookAnother != 'Y' && bookAnother != 'N' && bookAnother != 'n' && bookAnother != 'y' ) {
-    //         cout << "Invalid input. Please enter 'Y' or 'N'." <<endl;
-    //     }
-    // } while (bookAnother != 'Y' && bookAnother != 'N' && bookAnother != 'n' && bookAnother != 'y' );
-    // cout << endl;
+    cout << endl;
+    cout << "\n\nWould you like to see other appointments?\n" << endl;
+    cout << "Enter y or n: ";
+    cin >> bookAnother;
 
     while (bookAnother == 'y' || bookAnother == 'Y')
 {
