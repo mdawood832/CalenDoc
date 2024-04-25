@@ -1,12 +1,10 @@
-// patient.h - patient header file 
-// Written by Maryam Dawood 
-// Written 04/14/2024
-// patient.h includes all functions related to the patient interface 
-// that includes: information collection, scheduling an appointment, 
-// cancelling an appointment, submitting feedback and validating insurance. 
-
-
-
+/*
+patient.h - patient header file
+written by Maryam Dawood & Vi Pham on 04/14/2024
+patient.h includes all functions related to the patient interface 
+includes: information collection, scheduling an appointment, 
+cancelling an appointment, submitting feedback and validating insurance. 
+*/
 
 #include <iostream>
 #include <cstdlib>
@@ -20,35 +18,38 @@
 
 using namespace std;
 
-
+// PatientInfomationCollection: hold new patient infomation after registration 
 class PatientInformationCollection
 {
-    public :
+    private:
         string patientName;
         int patientID;
         string dateOfBirth;
         string patientPayment;
-        int currentBalance = 0;  
+        int currentBalance = 0.00;   // MUST be initalized to 0 
         string insuranceType; 
 
+    public: 
 
+
+   // prompts user for patient information 
     void getInfo()
     {
             cout << "Enter Patient's Name: "; 
             cin.get();
-            cin >> patientName; // HAYDEN: convert to all lower or upper
+            cin >> patientName; 
 
             cout << "Enter Patient ID: ";
             cin >> patientID;
 
             cout << "Date of Birth( DDMMYYYY): ";
-            cin >> dateOfBirth; // HAYDEN: make sure it's 8 characters
+            cin >> dateOfBirth; 
 
             cout << "Enter your Credit Card Number: ";
-            cin >> patientPayment; //HAYDEN: 15 digit credit card number 
+            cin >> patientPayment; 
 
-            cout <<"Enter your Insurance Type (alien, zombie, unicorn): ";
-            cin >> insuranceType; // HAYDEN: make sure it's these 3 options
+            cout <<"Enter your Insurance Type (alien, zombie, unicorn): ";  // placeholder names for insurance types
+            cin >> insuranceType; 
 
             ofstream out; 
             out.open("patientInfo.txt", ios::app); 
@@ -67,24 +68,6 @@ class PatientInformationCollection
         }
 
 
-        // search patient for details for Option #4
-        void findPatientInfo()
-        {
-
-            return; 
-        }
-
-        void CalculatePatientCopay(){
-            // patientCoPayAmount = appointmentCost * (1 - insuranceCoverage);
-
-            /* insurance Coverage rates: 
-                alien = 10% 
-                zombie = 30%
-                unicorn = 100*
-                other = 0%
-            appointment cost = 100; 
-            in the end add patient copay amount to current balance; */
-        }
 
 };
 
@@ -167,6 +150,12 @@ std::string dayofWeek(char day) {
 
 void viewAppointments() {
 
+
+    int userChoice;
+    char bookAnother;
+    string line;
+
+    start : 
     cout << "Select an Appointment Day\n";
     cout << "-------------------------\n";
     cout << "1. Monday" << endl;
@@ -174,8 +163,6 @@ void viewAppointments() {
     cout << "3. Wednesday" << endl;
     cout << "4. Thursday" << endl;
     cout << "5. Friday" << endl;
-
-    int userChoice;
 
     cout << endl;
     cout << "Select a Day: ";
@@ -223,9 +210,6 @@ void viewAppointments() {
     {
         arr[j] = 0;
     }
-        string line;
-        
-    
     
     if (read)
     {
@@ -264,7 +248,6 @@ void viewAppointments() {
 
     }
 
-    char bookAnother;
     cout << endl;
     cout << "\n\nWould you like to see other appointments?\n" << endl;
     cout << "Enter y or n: ";
@@ -272,27 +255,9 @@ void viewAppointments() {
 
     while (bookAnother == 'y' || bookAnother == 'Y')
 {
-    cout << "Select an Appointment Day\n";
-    cout << "-------------------------\n";
-    cout << "1. Monday" << endl;
-    cout << "2. Tuesday" << endl;
-    cout << "3. Wednesday" << endl;
-    cout << "4. Thursday" << endl;
-    cout << "5. Friday" << endl;
-
-    cout << endl;
-    cout << "Select a Day: ";
-    cin >> userChoice;
-
-    viewAppointments();
-
-    cout << endl;
-    cout << "\n\nWould you like to see other appointments?\n" << endl;
-    cout << "Enter y or n: ";
-    cin >> bookAnother;
+    goto start;
 }
 
-   
 return; 
 
 };
@@ -405,24 +370,7 @@ start :
 
     while (seeAnother == 'y' || seeAnother == 'Y')
 {
-    cout << "Select an Appointment Day\n";
-    cout << "-------------------------\n";
-    cout << "1. Monday" << endl;
-    cout << "2. Tuesday" << endl;
-    cout << "3. Wednesday" << endl;
-    cout << "4. Thursday" << endl;
-    cout << "5. Friday" << endl;
-
-    cout << endl;
-    cout << "Select a Day: ";
-    cin >> userChoice;
-
-    bookAppointments();
-
-    cout << endl;
-    cout << "\n\nWould you like to see another appointment day?\n" << endl;
-    cout << "Enter y or n: ";
-    cin >> seeAnother;
+    goto start;
 }
     char choice;
     cout<<"Input your desired appointment time: ";
