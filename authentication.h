@@ -1,3 +1,12 @@
+// authentication.h - authentication header file 
+// Written by Maryam Dawood 
+// Written 04/16/2024
+// authentication.h includes all functions related to the login page
+// as well as taking either patient, provider, or admin to their 
+// respective interface. The header file also includes 
+// login functionality, registration, and password recovery. 
+
+
 
 #include <iostream>
 #include <fstream> 
@@ -7,6 +16,11 @@
 #include "admin.h"
 #include "provider.h"
 
+
+
+// if users id starts with 1 then display patient interface
+// if users id starts with 2 then display provider interface
+// if users id starts with 3 then display admin interface
 void switchDisplays(int firstNum) {
 
         if (firstNum == 1) {
@@ -18,6 +32,12 @@ void switchDisplays(int firstNum) {
         } 
 }
 
+
+//asking patient to enter their ID and Password 
+//checking that the login info matches what's saved in records.txt
+//if the login info matches what's saved then we can pass the first digit 
+//of the id to switchDisplays() to display the respective interface. 
+//ELSE: the info entered does not match and we display error message 
 void login() {
 
     int count = 0;
@@ -47,6 +67,15 @@ void login() {
         cout << "\nLOGIN ERROR\nPlease check your username and password\n";
     }
 }
+
+//allowing the user to register an account as a provider, admin, or patient
+//it will ask what role the user falls in. If the user selects patient then the system will generate a 
+//random five digit ID starting with 1. Provider ID starts with 2. Admin ID starts with 3. If 
+//the user types a role that does not exist we display an error message saying that role does not exist and call the 
+//registration function again. 
+//Once the user has their ID they are prompted to enter the password. Both ID and password are then saved 
+//to "records.txt" with a " " in between. 
+
 
 void registration() {
     string role; 
@@ -121,17 +150,20 @@ void registration() {
 
 }
 
+//If the user forgets their password we can look up their password using their username. 
+//Tthe program will ask the user to enter their username and then check if the username matches anything we have in records.txt. 
+//If it is found we set count to 1 followed by another if statement that checks if count is set to 1 or 0. 
+//If count is set to 1 we display the password. If count is set to 0 that means the username does not exist 
+//in records.txt and it will display a message saying that the account was not found. 
+
 void forgot(){
     int option;
 
     cout << "\t\t\tYou forgot your password? No worries\n";
-    cout << "Press 1 to Search your id by username" << endl;
-    cout << "Press 2 to go Back to the Main menu" << endl;
-    cout << "\t\t\tEnter your choice :";
-    cin >> option;
-    switch (option) {
-        case 1:
-        {
+    cout << "Search your id by username" << endl;
+
+
+
             int count=0;
             string suserId,sId,spass;
             cout<<"\n\t\t\tEnter the username which you remembered :";
@@ -149,47 +181,14 @@ void forgot(){
             if(count==1)
             {
                 cout<<"\n\n\tYour account is found\n";
-                cout<<"\n\tYour password is "<<spass;
+                cout<<"\n\tYour password is "<<spass << endl; 
             }
             else
             {
                 cout<<"\n\tSorry, Account not found! \n";
             }
             
-            break;
-        }
-        case 2:
-        {
-            int count=0;
-            string searchpass,su2,sp2;
-            cout<<"\nEnter the remembered password :";
-            cin>>searchpass;
+    
 
-            ifstream searchp("database.txt");
-            while(searchp>>su2>>sp2)
-            {
-                if(sp2==searchpass)
-                {
-                    count=1;
-                }
-            }
-            searchp.close();
-            if(count==1)
-            {
-                cout<<"\nYour password is found in the database \n";
-                cout<<"\nYour Id is : "<<su2;
-                cin.get();
-                cin.get();
-            }
-            else
-            {
-                cout<<"Sorry, We cannot found your password in our database \n";
-                cout<<"\nkindly contact your administrator for more information\n";
-                cin.get();
-                cin.get();
-            }
-
-            break;
-        } 
-    }
+    
 }

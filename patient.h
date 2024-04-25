@@ -1,3 +1,13 @@
+// patient.h - patient header file 
+// Written by Maryam Dawood 
+// Written 04/14/2024
+// patient.h includes all functions related to the patient interface 
+// that includes: information collection, scheduling an appointment, 
+// cancelling an appointment, submitting feedback and validating insurance. 
+
+
+
+
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
