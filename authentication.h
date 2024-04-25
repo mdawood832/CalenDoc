@@ -3,8 +3,7 @@
 // Written 04/16/2024
 // authentication.h includes all functions related to the login page
 // as well as taking either patient, provider, or admin to their 
-// respective interface. The header file also includes 
-// login functionality, registration, and password recovery. 
+// respective interface. 
 
 
 #include <iostream>

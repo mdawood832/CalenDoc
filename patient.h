@@ -137,33 +137,13 @@ class Feedback
         }
 };
 
-string dayofWeek(char day) {
-    
-    if (day == 'A')
-        return "Monday";
-        
-    else if (day == 'B')
-        return "Tuesday";
-        
-    else if (day == 'C')
-        return "Wednesday";
-        
-    else if (day == 'D')
-        return "Thursday";
-        
-    else
-     return "Friday";
-}
-
-
 void viewAppointments() {
-
-
+start:
     int userChoice;
     char bookAnother;
     string line;
 
-    start : 
+     
     cout << "Select an Appointment Day\n";
     cout << "-------------------------\n";
     cout << "1. Monday" << endl;
@@ -173,8 +153,17 @@ void viewAppointments() {
     cout << "5. Friday" << endl;
 
     cout << endl;
+
     cout << "Select a Day: ";
     cin >> userChoice;
+
+    //input validation for days of the week, make sure its a number from 1-5
+     if(userChoice<1 || userChoice >5)
+        {
+            cout << "\nInvalid Choice . Please Try Again .\n";
+            goto start; 
+        }
+
 
     cout << "\n ----- Book Your Appointment ---- \n";	
     cout << "\n ----- Availbale slots ---- \n";	 
@@ -203,7 +192,6 @@ void viewAppointments() {
         {
             read.open("Thursday.txt");
         }
-
         else 
         {
             read.open("Friday.txt");
@@ -257,9 +245,17 @@ void viewAppointments() {
     }
 
     cout << endl;
-    cout << "\n\nWould you like to see other appointments?\n" << endl;
-    cout << "Enter y or n: ";
-    cin >> bookAnother;
+    //input validation for yes or no answer
+    do {
+        cout << "\n\nWould you like to see other appointments?\n" <<endl;
+        cout << "Enter Y or N: ";
+        cin >> bookAnother;
+
+
+        if (bookAnother != 'Y' && bookAnother != 'N' && bookAnother != 'n' && bookAnother != 'y' ) {
+            cout << "Invalid input. Please enter 'Y' or 'N'." <<endl;
+        }
+    } while (bookAnother != 'Y' && bookAnother != 'N' && bookAnother != 'n' && bookAnother != 'y' );
 
     while (bookAnother == 'y' || bookAnother == 'Y')
 {
@@ -442,19 +438,22 @@ start :
             out.open("Thursday.txt", ios::app);
         }
 
-        else 
+        else
         {
             out.open("Friday.txt", ios::app);
         }
+
 
         if(out){
             out<<choice<<":"<<name.c_str()<<"\n";
             out.close();
             cout<<"\n Appointment booked for Hours : "<< (choice-65) + 9 <<" successfully !!";
-           exit(0); 
+           
         }
         else{
             cout<<"\n Error while saving booking";
+            cout << "\n Please select different time !!";
+            goto start;
         }
 
         out.close();
@@ -868,7 +867,6 @@ void validateInsurance(){
 //if the user does not enter a number between 1 and 5 then the program will prompt the user to enter a valid choice. 
 //We used a switch statement to manuver between menu options. 
 void displayMenuPatient(){
-start: 
     cout << "*********************************************************************\n";
     cout <<"..............CalenDoc Patient Interface ............\n";
     cout << "*********************************************************************\n";
@@ -902,7 +900,7 @@ start:
             {
                 patientInformationCollection(); 
                 char c;
-                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n" <<endl; 
                 cin >> c;
 
                 if(c == 'q'|| c == 'Q')
@@ -917,13 +915,13 @@ start:
             {   
                 bookAppointments(); 
                 char c;
-                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n" <<endl; 
                 cin >> c;
 
                 if(c == 'q'|| c == 'Q')
                     exit(EXIT_FAILURE);
                 else
-                    displayMenuPatient();  
+                    displayMenuPatient();   
 
             }
             break; 
@@ -934,7 +932,7 @@ start:
             {    
                 cancelAppointment(); 
                 char c;
-                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n" <<endl; 
                 cin >> c;
 
                 if(c == 'q'|| c == 'Q')
@@ -951,7 +949,7 @@ start:
 
                 getFeedback(); 
                 char c;
-                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n" <<endl; 
                 cin >> c;
 
                 if(c == 'q'|| c == 'Q')
@@ -967,7 +965,7 @@ start:
 
                 validateInsurance(); 
                 char c;
-                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n" <<endl; 
                 cin >> c;
 
                 if(c == 'q'|| c == 'Q')
