@@ -1,3 +1,12 @@
+/* 
+provider.h - header for provider interface 
+written by Vi Pham on 04/18/2024
+includes provider info collection, provider menu, appointment confirmation, display all patient info, 
+display all patient feedback, and calculate weekly copay
+using respective functions in authentication.h
+*/
+
+
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
@@ -69,6 +78,7 @@ void confirmAppontment()
         istringstream iss(line);
         string searchName;
         string patientBalance;
+
         // Get the name from the line and convert it to lowercase
         if (getline(iss, searchName, ':')) {
             transform(searchName.begin(), searchName.end(), searchName.begin(), ::tolower);
@@ -224,34 +234,43 @@ void weeklyCopay(){
     file.close();
 
     // Display the sum
-    cout << "Th weekly copay is : $ " << sum << endl;
+    cout << "Th weekly copay is : $" << sum << ".00" << endl;
 }
 
-
+// provider interface 
 void displayProviderMenu(){
+
+     int choice;
+    
 start: 
+
+    cout << endl;
     cout << "*********************************************************************\n";
-    cout <<"..............CalenDoc Provider Interface ............\n";
+    cout <<"....................... WELCOME TO CALENDOC .........................\n";
+    cout <<"............................ Provider ...............................\n";
     cout << "*********************************************************************\n";
-    int k = 0;
-    int choice;
-    do{
+    cout<< endl;
+
         cout << "\tChoose Option From Menu (1-5) \n";
         cout << "--------------------------------------------------------------------\n";
         cout << "\t1. View all Patients \n";
-        cout << "\t2. View all Feedback\n";
+        cout << "\t2. View all Feedck\n";
         cout << "\t3. Check Weekly Copay\n";
         cout << "\t4. Confirm Appointment Status\n";
+        cout << endl;
         cout << "Please Enter your Preferred Choice : ";
         cin >> choice;
-        if(choice<1 || choice >4)
+        cout << endl; 
+
+        // input validation
+       while (!(choice > 1 || choice < 5))
         {
             cout << "\nInvalid Choice . Please Try Again .\n";
-            k++;
-        
-            // confirmAppontment();
+            cout << "Please Enter your Preferred Choice : ";
+            cin >> choice;
+         
         }
-    }while(k != 0);
+
     switch (choice)
     {
         case 1:  

@@ -1,31 +1,35 @@
 // authentication.h - authentication header file 
-// Written by Maryam Dawood 
-// Written 04/16/2024
+// written by Maryam Dawood on 04/16/2024
+// edited by Vi Pham on 04/25/2024
 // authentication.h includes all functions related to the login page
 // as well as taking either patient, provider, or admin to their 
-// respective interface. 
+// respective interface. The header file also includes 
+// login functionality, registration, and password recovery. 
 
 
 #include <iostream>
 #include <fstream> 
 #include <string> 
 #include <random>
+
+// must be included to retreive respective interface
 #include "patient.h"
 #include "admin.h"
 #include "provider.h"
 
-
-
-// if users id starts with 1 then display patient interface
-// if users id starts with 2 then display provider interface
-// if users id starts with 3 then display admin interface
+// redirects to perspective interface after entering login credentials 
 void switchDisplays(int firstNum) {
 
+        // if users id starts with 1 then display patient interface
         if (firstNum == 1) {
             displayMenuPatient(); 
-        } else if (firstNum == 2) {
+        } 
+        // if users id starts with 2 then display provider interface
+        else if (firstNum == 2) {
             displayProviderMenu(); 
-        } else if (firstNum == 3) {
+        } 
+        // if users id starts with 3 then display admin interface
+        else if (firstNum == 3) {
             displayAdminMenu(); 
         } 
 }
@@ -41,10 +45,10 @@ start:
     int count = 0;
     string  password, pass; 
     string userId, id; 
-    cout << "\t\t\tplease enter the username & password" << endl; 
-    cout << "\t\t\tID :";
+    cout << "\t\t\tPlease enter the username & password" << endl; 
+    cout << "\t\t\tID: ";
     cin >> userId; 
-    cout << "\t\t\tPASSWORD :";
+    cout << "\t\t\tPASSWORD: ";
     cin >> password; 
 
     ifstream input("records.txt");
@@ -57,12 +61,12 @@ start:
     input.close();
 
     if (count == 1) {
-        cout << "successufl login" << endl; 
+        cout << "\nSuccessufl login!\n" << endl; 
         int firstDigit = std::stoi(userId) / 10000;
         switchDisplays(firstDigit); 
     
     } else {
-        cout << "\nLOGIN ERROR\nPlease check your username and password\n";
+        cout << "\nLOGIN ERROR. Please check your username and password\n";
         goto start; 
     }
 }
@@ -77,9 +81,17 @@ start:
 
 
 void registration() {
+
+    // OFFICE CREDENTIALS 
+    string officePassword = "ChickenWing11"; 
+    string userInput; 
+
     string role; 
-    cout << "Are you a Patient, Provider, or Admin" << endl; 
+    cout << "Are you a Patient, Provider, or Administrator? " << endl; 
+    cin.ignore();
     cin >> role; 
+
+    
 
     if(role == "Patient" | role == "patient"){
         string rpassword, rpass;
@@ -97,14 +109,31 @@ void registration() {
         cout << "Generated five-digit ID: " << id << endl;
         
     
-        cout << "\n\t\t\tEnter the password :";
+        cout << "\n\t\t\tCreate a password :";
         cin >> rpassword;
 
         ofstream f1("records.txt", ios::app);
         f1 << id << ' ' << rpassword << endl;
 
-        cout << "\n\t\t\tRegistration is Successful\n";
+        cout << "\n\t\t\tRegistration was successful!\n";
+
+
     } else if (role == "Provider" | role == "provider"){
+
+        // input validation so only the office can create a provider account 
+        cout << endl; 
+        cout << "Enter office password: ";
+        cin.ignore();
+        getline(cin, userInput); 
+
+        while (userInput != officePassword)
+        {
+            cout << "Incorrect password. Please try again: ";
+            cin.ignore();
+            getline(cin, userInput);
+
+        }
+
         string  rpassword, rpass;
         random_device rd;
         mt19937 gen(rd());
@@ -118,12 +147,27 @@ void registration() {
         // Output the generated ID
         cout << "Generated five-digit ID: " << id << endl;
 
-        cout << "\n\t\t\tEnter the password :";
+        cout << "\n\t\t\tCreate a password: ";
         cin >> rpassword;
 
         ofstream f1("records.txt", ios::app);
         f1 << id << ' ' << rpassword << endl;
+
     } else if (role == "Admin" | role == "admin"){
+        cout << endl; 
+        cout << "Enter office password: ";
+        cin.ignore();
+        getline(cin, userInput); 
+        
+
+        while (userInput != officePassword)
+        {
+            cout << "Incorrect password. Please try again: ";
+            getline(cin, userInput);
+            cin.ignore();
+            cout << endl;
+        }
+
         string rpassword, rpass;
         random_device rd;
         mt19937 gen(rd());
@@ -133,13 +177,13 @@ void registration() {
         int id = dis(gen);
         
         cout << "Generated five-digit ID: " << id << endl;
-        cout << "\n\t\t\tEnter the password :";
+        cout << "\n\t\t\tCreate a password: ";
         cin >> rpassword;
 
         ofstream f1("records.txt", ios::app);
         f1 << id << ' ' << rpassword << endl;
     } else {
-        cout << "No such role exists, try again" << endl; 
+        cout << "\nNo such role exists, try again.\n" << endl; 
         registration(); 
     }
     
@@ -158,14 +202,14 @@ void registration() {
 void forgot(){
     int option;
 
-    cout << "\t\t\tYou forgot your password? No worries\n";
-    cout << "Search your id by username" << endl;
+    cout << "\t\t\tYou forgot your password? No worries!\n";
+    cout << "Search your id by username: " << endl;
 
 
 
             int count=0;
             string suserId,sId,spass;
-            cout<<"\n\t\t\tEnter the username which you remembered :";
+            cout<<"\n\t\t\tEnter the username which you remembered: ";
             cin>>suserId;
 
             ifstream f2("records.txt");
@@ -179,12 +223,12 @@ void forgot(){
             f2.close();
             if(count==1)
             {
-                cout<<"\n\n\tYour account is found\n";
+                cout<<"\n\n\tYour account is found.\n";
                 cout<<"\n\tYour password is "<<spass << endl; 
             }
             else
             {
-                cout<<"\n\tSorry, Account not found! \n";
+                cout<<"\n\tAccount not found! \n";
             }
     
 }
