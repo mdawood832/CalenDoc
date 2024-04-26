@@ -26,13 +26,10 @@ class PatientInformationCollection
         int patientID;
         string dateOfBirth;
         string patientPayment;
-        int currentBalance = 0.00;   // MUST be initalized to 0 
         string insuranceType; 
 
     public: 
-
-
-   // prompts user for patient information 
+   // function prompting user for patient information and stores into patientInfo.txt
     void getInfo()
     {
             cout << "Enter Patient's Name: "; 
@@ -42,7 +39,7 @@ class PatientInformationCollection
             cout << "Enter Patient ID: ";
             cin >> patientID;
 
-            cout << "Date of Birth( DDMMYYYY): ";
+            cout << "Date of Birth(DDMMYYYY): ";
             cin >> dateOfBirth; 
 
             cout << "Enter your Credit Card Number: ";
@@ -53,6 +50,15 @@ class PatientInformationCollection
 
             ofstream out; 
             out.open("patientInfo.txt", ios::app); 
+
+            /* 
+            
+            format requirement for patientInfo.txt
+
+            name:id:dob:cardNumber 
+            NOTE: booking and canceling appointments will not work without this format
+
+            */
 
             out << patientName.c_str()<< ":" << patientID << ":" << dateOfBirth << ":" << patientPayment << ":" <<
             insuranceType << "\n";
@@ -65,8 +71,9 @@ class PatientInformationCollection
         void disInfo()
         {
             cout.setf(ios::left);
-            cout <<setw(15)<< patientName <<setw(20)<< patientID <<setw(30)<<dateOfBirth <<setw(20)<<patientPayment <<setw(30)<< insuranceType<<setw(30)<<currentBalance<<endl;
+            cout <<setw(15)<< patientName <<setw(20)<< patientID <<setw(30)<<dateOfBirth <<setw(20)<<patientPayment <<setw(30)<< insuranceType<<setw(30)<<endl;
         }
+
 
 
 
@@ -76,7 +83,6 @@ class PatientInformationCollection
 //calls getInfo() from patientInformationCollection to get user's information. 
 //uses disInfo() from patientInformationCollection to display patients details in structured format
 //displays to the user that their information was saved 
-
 void patientInformationCollection () {
                PatientInformationCollection b;
                 fstream f1;
@@ -84,6 +90,8 @@ void patientInformationCollection () {
                 cout << "\t\tWelcome to Patient Information Collection\n";
                 cout << "\t\t---------------------------\n";
 
+
+                // input validation
                 f1.open("patientInfo.txt", ios::out | ios::app);
                 if (!f1.is_open()) {
                     cerr << "Error: Unable to open file for writing!" << endl;
@@ -101,9 +109,12 @@ void patientInformationCollection () {
                     b.disInfo();
 
                     cout << "\n\t..........Information Saved...............\n";
-                    tag = false; 
+                    tag = false;
+      
                 } while (tag);
-}
+
+                
+            }
 
 
 //class feedback that collects the user's feedback information: name, ID, date, and rating. 
@@ -124,11 +135,12 @@ class Feedback
             cout << "Enter Patient ID: ";
             cin >> patientID;
 
-            cout << "Enter Today's Date ( DD/MM/YYYY ): ";
+            cout << "Enter Today's Date (DDMMYYYY): ";
             cin >> date;
 
             cout << "Enter Provider Rating (1-5): " ;
             cin >> rating;
+
         }
 
         //displays attributes 
@@ -137,33 +149,16 @@ class Feedback
         }
 };
 
-string dayofWeek(char day) {
-    
-    if (day == 'A')
-        return "Monday";
-        
-    else if (day == 'B')
-        return "Tuesday";
-        
-    else if (day == 'C')
-        return "Wednesday";
-        
-    else if (day == 'D')
-        return "Thursday";
-        
-    else
-     return "Friday";
-}
-
-
 void viewAppointments() {
 
 
-    int userChoice;
-    char bookAnother;
-    string line;
+    int userChoice;    // day selected 
+    char bookAnother;  // another day selected 
+    string line;       // temp variable while reading while 
 
+    // appointment availability menu
     start : 
+    cout << endl; 
     cout << "Select an Appointment Day\n";
     cout << "-------------------------\n";
     cout << "1. Monday" << endl;
@@ -172,12 +167,13 @@ void viewAppointments() {
     cout << "4. Thursday" << endl;
     cout << "5. Friday" << endl;
 
+    // prompts for a weekday 
     cout << endl;
-    cout << "Select a Day: ";
+    cout << "Select a Day (1-5): ";
     cin >> userChoice;
 
-    cout << "\n ----- Book Your Appointment ---- \n";	
-    cout << "\n ----- Availbale slots ---- \n";	 
+    cout << "\n ----- Book Your Appointment -----\n";	
+    cout << "\n -------- Availbale slots --------\n";	 
     
     // opens file object
     ifstream read;
@@ -185,27 +181,32 @@ void viewAppointments() {
     
         if (userChoice == 1)
         {
-               cout << "\n ----- Monday ----------- \n";	 
+            cout << "\n ------------- Monday ------------\n";
             read.open("Monday.txt");
         }
 
         else if (userChoice == 2)
         {
+            cout << "\n ------------- Tuesday -----------\n";
             read.open("Tuesday.txt");
         }
 
         else if (userChoice == 3)
         {
+
+            cout << "\n -------------Wednesday ---------\n";
             read.open("Wednesday.txt");
         }
 
         else if (userChoice == 4)
         {
+            cout << "\n -------------Thursday ----------\n";
             read.open("Thursday.txt");
         }
 
         else 
         {
+            cout << "\n ------------- Friday -----------\n";
             read.open("Friday.txt");
         }
    
@@ -213,7 +214,7 @@ void viewAppointments() {
         int recordFound = 0;
         int arr[numOfHours];
 
-    // initialize array
+    // initialize array to default zeros = available
     for (int j = 0; j < numOfHours; j++)
     {
         arr[j] = 0;
@@ -221,7 +222,7 @@ void viewAppointments() {
     
     if (read)
     {
-        // loop to mark appointment was recordFound
+        // loop to flag recordFound = booked
         while (getline(read, line))
         {
             char temp = line[0];
@@ -232,12 +233,12 @@ void viewAppointments() {
         
     }
     
-    read.close();
+    read.close();  
     
     char key = 'A';
     int hour = 8;
     
-    // display availability 
+    // display availability using updated array
     for (int i = 0; i < numOfHours; i++)
     {
         if (arr[i] == 1)
@@ -273,7 +274,7 @@ return;
 //prompts the user to select an appointment day from monday-tuesday
 void bookAppointments(){
 start :
-    cout << "Select an Appointment Day\n";
+    cout << "Select an Appointment Day \n";
     cout << "-------------------------\n";
     cout << "1. Monday" << endl;
     cout << "2. Tuesday" << endl;
@@ -284,7 +285,7 @@ start :
     int userChoice;
 
     cout << endl;
-    cout << "Select a Day(1-5): ";
+    cout << "Select a Day (1-5): ";
     //input validation for day selection 
     cin >> userChoice;
         if(userChoice<1 || userChoice >5)
@@ -293,35 +294,40 @@ start :
             goto start; 
         }
 
-    cout << "\n ----- Book Your Appointment ---- \n";	
-    cout << "\n ----- Availbale slots ---- \n";	 
+    cout << "\n ----- Book Your Appointment -----\n";	
+    cout << "\n -------- Availbale slots --------\n";	
     
     // opens file object
     ifstream read;
     
-        if (userChoice == 1)
+         if (userChoice == 1)
         {
-               cout << "\n ----- Monday ----------- \n";	 
+            cout << "\n ------------- Monday ------------\n";
             read.open("Monday.txt");
         }
 
         else if (userChoice == 2)
         {
+            cout << "\n ------------ Tuesday ------------\n";
             read.open("Tuesday.txt");
         }
 
         else if (userChoice == 3)
         {
+
+            cout << "\n -------------Wednesday ---------\n";
             read.open("Wednesday.txt");
         }
 
         else if (userChoice == 4)
         {
+            cout << "\n -------------Thursday ----------\n";
             read.open("Thursday.txt");
         }
 
         else 
         {
+            cout << "\n ------------- Friday -----------\n";
             read.open("Friday.txt");
         }
    
@@ -354,6 +360,7 @@ start :
     
     read.close();
     
+    // variables that are incremented after display each appointment time
     char key = 'A';
     int hour = 8;
     
@@ -376,6 +383,7 @@ start :
 
     }
 
+    // loop to see another appointmnet 
     char seeAnother;
     //input validation for yes or no question 
      do {
@@ -417,8 +425,9 @@ start :
             }
 
         string name;
-        cout << "Enter your first name:";
+        cout << "Enter your first name: ";
         cin >> name;  
+        cout << endl;
 
         ofstream out;
 
@@ -450,19 +459,18 @@ start :
         if(out){
             out<<choice<<":"<<name.c_str()<<"\n";
             out.close();
-            cout<<"\n Appointment booked for Hours : "<< (choice-65) + 9 <<" successfully !!";
-           exit(0); 
+            cout<<"\nAppointment booked for Hours : "<< (choice-65) + 9 <<" successfully !!";
+            cout <<endl; 
         }
         else{
-            cout<<"\n Error while saving booking";
+            cout<<"\nError while saving booking";
         }
 
         out.close();
 
-     
-
 }
 
+// function allow patient to cancel appointment 
 void cancelAppointment() {
 
            string name;
@@ -505,8 +513,6 @@ void cancelAppointment() {
                 inFile.open("Friday.txt");
                 dayPlaceHolder = 5;
             }
-
-
 
 
             // input validation 
@@ -567,12 +573,12 @@ void cancelAppointment() {
                     {
                         remove("Tuesday.txt");
                         rename("temp.txt", "Tuesday.txt");
-                        cout << "Appointment cancelled successfully." << endl;
+                        cout << "\nAppointment cancelled successfully." << endl;
                     } 
                     else 
                     {
                         remove("temp.txt");
-                        cout << "Appointment not found for the given name." << endl;
+                        cout << "\nAppointment not found for the given name." << endl;
                     }
                 } break; 
 
@@ -582,12 +588,12 @@ void cancelAppointment() {
                     {
                         remove("Wednesday.txt");
                         rename("temp.txt", "Wednesday.txt");
-                        cout << "Appointment cancelled successfully." << endl;
+                        cout << "\nAppointment cancelled successfully." << endl;
                     } 
                     else 
                     {
                         remove("temp.txt");
-                        cout << "Appointment not found for the given name." << endl;
+                        cout << "\nAppointment not found for the given name." << endl;
                     }
                 } break; 
 
@@ -597,12 +603,12 @@ void cancelAppointment() {
                     {
                         remove("Thursday.txt");
                         rename("temp.txt", "Thursday.txt");
-                        cout << "Appointment cancelled successfully." << endl;
+                        cout << "\nAppointment cancelled successfully." << endl;
                     } 
                     else 
                     {
                         remove("temp.txt");
-                        cout << "Appointment not found for the given name." << endl;
+                        cout << "\nAppointment not found for the given name." << endl;
                     }
                 } break; 
 
@@ -612,12 +618,12 @@ void cancelAppointment() {
                     {
                         remove("Thursday.txt");
                         rename("temp.txt", "Thursday.txt");
-                        cout << "Appointment cancelled successfully." << endl;
+                        cout << "\nAppointment cancelled successfully." << endl;
                     } 
                     else 
                     {
                         remove("temp.txt");
-                        cout << "Appointment not found for the given name." << endl;
+                        cout << "\nAppointment not found for the given name." << endl;
                     }
                 } break; 
 
@@ -629,38 +635,40 @@ void cancelAppointment() {
     
 }
 
+// function that allows patient to book appointments 
 int bookAppointment(){
-                cout<<"\n ----- Book Your Appointment ---- \n";	
-                cout<<"\n ----- Availbale slots ---- \n";	 
+    cout << "\n ----- Book Your Appointment -----\n";	
+    cout << "\n -------- Availbale slots --------\n"; 
 
-                //check if record already exist..
-                ifstream read;
-                read.open("appointments.txt");
+    //check if record already exist..
+     ifstream read;
+    read.open("appointments.txt");
                 
-                int hoursbook = 8;
+    int hoursbook = 8;
                 
-                int arr[13] = {0,0,0,0,0,0,0,0,0,0,0,0,0};
-                int recordFound =0; 
+    // array initialized to zeros = available
+    int arr[13] = {0,0,0,0,0,0,0,0,0,0,0,0,0};
+    int recordFound =0; 
                 
-                if(read)
-                {     
-                    string line;
-                    char key = 'A';
-                    int i = 9;
+        if(read)
+            {     
+            string line;
+            char key = 'A';
+            int i = 9;
 	       
-                    while(getline(read, line)) {
-                        char temp = line[0];
-                        int index = (temp - 65);
-                        arr[index]=1;  
-                        recordFound = 1;
-                    }
-                    if(recordFound == 1)
-                    {
-                        cout<<"\n Appointment Summary by hours:";
-                        char key = 'A';
-                        int hours = 9;
-                        for(int i = 0; i<=12; i++)
-                        {
+            while(getline(read, line)) {
+                char temp = line[0];
+                int index = (temp - 65);
+                arr[index]=1;  
+                recordFound = 1;
+                }
+            if(recordFound == 1)
+                {
+                cout<<"\n Appointment Summary by hours:";
+                char key = 'A';
+                int hours = 9;
+                for(int i = 0; i<=12; i++)
+                            {
                             if(i == 0){
                                 if(arr[i] == 0) 
                                     cout<<"\n "<<key<<"-> 0"<<hours<<" - Available";
@@ -703,6 +711,7 @@ int bookAppointment(){
             cout<<"\n\n Input your choice : ";
             cin>>choice;
         
+            // input validation
             if( !(choice >= 'A' && choice <='Z'))
             {
             cout<<"\n Error : Invalid Selection";
@@ -712,7 +721,10 @@ int bookAppointment(){
             system("cls");
             bookAppointment();
              }
-   
+
+
+        // index takes choice (letter in ASCII) and minuses 65
+        // A = 65 so 65-65 = 0
         int index = (choice-65 );
         int isBooked = 1;
         if(arr[index] == 0) 
@@ -723,6 +735,7 @@ int bookAppointment(){
             cout<<"\n Error : Appointment is already booked for this Hour";
             cout<<"\n Please select different time !!";
             cout<<"\n Press any key to continue!!";
+            cout << endl;
             getchar();getchar();
             system("cls");
             bookAppointment();
@@ -739,6 +752,7 @@ int bookAppointment(){
             out<<choice<<":"<<name.c_str()<<"\n";
             out.close();
             cout<<"\n Appointment booked for Hours : "<< (choice-65) + 9 <<" successfully !!";
+            cout << endl;
         }
         else{
             cout<<"\n Error while saving booking";
@@ -759,6 +773,8 @@ void getFeedback(){
                 char ch;
                 int book_id = 1;
                 f1.open("feedback.txt",ios::out | ios::app);
+
+                cout << endl; 
                 cout << "\t\tWelcome to Feedback Collection\n";
                 cout << "\t\t---------------------------\n";
 
@@ -785,55 +801,6 @@ void getFeedback(){
                 cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard the input buffer
 }
 
-//allows patient to change their appointment 
-//ask user to enter their name they saved the appointment under 
-//if name is found under appointments.txt, we allow the user to 
-//enter their new appointment in the correct format. The program will 
-//print the message that the appointment was successfully modified. 
-//If the user's name was not found the program will print that the 
-//appointment was not found 
-void modifyAppointment() {
-    string name;
-    cout << "Enter your name to modify appointment: ";
-    cin >> name; 
-
-    ifstream inFile("appointments.txt");
-    ofstream outFile("temp.txt");
-    if (!inFile) {
-        cerr << "Error: Unable to open file." << endl;
-        return;
-    }
-
-    bool found = false;
-    string line;
-    while (getline(inFile, line)) {
-        size_t pos = line.find(":");
-        if (pos != string::npos) {
-            string appointmentName = line.substr(pos + 1);
-            if (appointmentName == name) {
-                found = true;
-                string newAppointment;
-                cout << "Enter new appointment (format: A:NewName): ";
-                cin >> newAppointment; 
-                outFile << newAppointment << endl;
-                break; 
-            }
-        }
-        outFile << line << endl;
-    }
-
-    inFile.close();
-    outFile.close();
-
-    if (found) {
-        remove("appointments.txt");
-        rename("temp.txt", "appointments.txt");
-        cout << "Appointment modified successfully." << endl;
-    } else {
-        remove("temp.txt");
-        cout << "Appointment not found for the given name." << endl;
-    }
-}
 
 //will ask the user to enter what type of insurance they have. Will go 
 //through the accepted insurances array and compare input with the array items. 
@@ -869,21 +836,27 @@ void validateInsurance(){
 //We used a switch statement to manuver between menu options. 
 void displayMenuPatient(){
 start: 
-    cout << "*********************************************************************\n";
-    cout <<"..............CalenDoc Patient Interface ............\n";
-    cout << "*********************************************************************\n";
+
+        cout << endl;
+        cout << "*********************************************************************\n";
+        cout <<"....................... WELCOME TO CALENDOC .........................\n";
+        cout <<"............................. Patient ...............................\n";
+        cout << "*********************************************************************\n";
+        cout<< endl;
+
     int k = 0;
     int choice;
     do
     {
-        cout << "\tChoose Option From Menu (1-5) \n";
+        cout << "\t Choose Option From Menu (1-5) \n";
         cout << "--------------------------------------------------------------------\n";
-        cout << "\t1. Patient Information Collection\n";
+        cout << "\t1. Complete patient profile (new users only)\n";
         cout << "\t2. Schedule an Appointment\n";
         cout << "\t3. Cancel an Appointment\n";
         cout << "\t4. Submit Feedback\n";
         cout << "\t5. Insurance Validation\n";
 
+        cout << endl;
         cout << "Please Enter your Preferred Choice :- ";
         cin >> choice;
         if(choice<1 || choice >5)
@@ -900,16 +873,47 @@ start:
         //back to the patient menu. 
         case 1:  
             {
-                patientInformationCollection(); 
-                char c;
-                cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
-                cin >> c;
+                int answer; 
+                cout << "\nPress 1 for NEW PATIENTS\n";
+                cout << "Press 2 for EXISTING PATIENTS\n";
+                cout << endl;
+                cout << "Enter: ";
+                cin >> answer;
 
-                if(c == 'q'|| c == 'Q')
-                    exit(EXIT_FAILURE);
-                else
-                    displayMenuPatient();  
-            }
+                if (answer == 1)
+                {
+                 
+                    patientInformationCollection(); 
+                    char c;
+                    cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                    cin >> c;
+
+                    if(c == 'q'|| c == 'Q')
+                        exit(EXIT_FAILURE);
+                    else
+                        displayMenuPatient();  
+                }
+                else 
+                {
+                    cout << endl;
+                    cout << "If you are an existing patient, please contact the office at 832-000-0000 for any profile modifications.\n";
+                    cout << "\nOur Office Hours:\n";
+                    cout << "Monday-Friday: 8pm-5pm\n";
+                    cout << "Saturday-Sunday: CLOSED\n";
+                    cout << endl;
+                    char c;
+                    cout << "\tEnter 'q' to quit or Any Other key to go to HomeScreen\n";
+                    cin >> c;
+
+                    if(c == 'q'|| c == 'Q')
+                        exit(EXIT_FAILURE);
+                    else
+                        displayMenuPatient();  
+
+                }
+
+                }
+
             break;
         //calling bookAppointments function. Followed by the choice to quit entirely or to go 
         //back to the patient menu. 

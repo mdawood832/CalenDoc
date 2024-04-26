@@ -1,3 +1,12 @@
+/* 
+admin.h - header for admin interface 
+written by Vi Pham on 04/23/2024
+includes functions to schedule an appointment, cancel an appointment, 
+clear patient balance, charge patient, and reset weekday files 
+*/
+
+void displayAdminMenu();
+
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
@@ -7,11 +16,6 @@
 #include <string> 
 #include <sstream>
 using namespace std;
-
-
-
-
-
 
 
 void scheduleAppointments(){
@@ -31,35 +35,40 @@ start :
     cout << "Select a Day (1-5): ";
     cin >> userChoice;
 
-    cout << "\n ----- Book Your Appointment ---- \n";	
-    cout << "\n ----- Availbale slots ---- \n";	 
+    cout << "\n ----- Book Your Appointment -----\n";	
+    cout << "\n -------- Availbale slots --------\n";	
     
     // opens file object
     ifstream read;
     
-        if (userChoice == 1)
+          if (userChoice == 1)
         {
-               cout << "\n ----- Monday ----------- \n";	 
+            cout << "\n ------------- Monday ------------\n";
             read.open("Monday.txt");
         }
 
         else if (userChoice == 2)
         {
+            cout << "\n ------------ Tuesday ------------\n";
             read.open("Tuesday.txt");
         }
 
         else if (userChoice == 3)
         {
+
+            cout << "\n -------------Wednesday ---------\n";
             read.open("Wednesday.txt");
         }
 
         else if (userChoice == 4)
         {
+            cout << "\n -------------Thursday ----------\n";
             read.open("Thursday.txt");
         }
 
         else 
         {
+            cout << "\n ------------- Friday -----------\n";
             read.open("Friday.txt");
         }
    
@@ -121,26 +130,10 @@ start :
     cin >> seeAnother;
 
     while (seeAnother == 'y' || seeAnother == 'Y')
-{
-    cout << "Select an Appointment Day\n";
-    cout << "-------------------------\n";
-    cout << "1. Monday" << endl;
-    cout << "2. Tuesday" << endl;
-    cout << "3. Wednesday" << endl;
-    cout << "4. Thursday" << endl;
-    cout << "5. Friday" << endl;
+    {
+        goto start;
+    }
 
-    cout << endl;
-    cout << "Select a Day (1-5): ";
-    cin >> userChoice;
-
-    bookAppointments();
-
-    cout << endl;
-    cout << "\n\nWould you like to see another appointment day?\n" << endl;
-    cout << "Enter y or n: ";
-    cin >> seeAnother;
-}
     char choice;
     cout<<"Input your desired appointment time: ";
     cin>>choice;
@@ -161,7 +154,7 @@ start :
             }
 
         string name;
-        cout << "Enter your first name:";
+        cout << "Enter patient's first name:";
         cin >> name;  
 
         ofstream out;
@@ -198,7 +191,8 @@ start :
             
         }
         else{
-            cout<<"\n Error while saving booking";
+            cout << endl;
+            cout<<"\n Error while saving booking\n";
         }
 
 
@@ -216,9 +210,9 @@ void cancelTheAppointment() {
            int dayPlaceHolder;    
 
             // prompts user for name and appointment day 
-            cout << "Enter your name to cancel appointment: ";
+            cout << "Enter patient's name to cancel appointment: ";
             cin >> name; 
-            cout << "Enter your appointment day: ";
+            cout << "Enter the appointment day: ";
             cin >> day;
 
             ifstream inFile;
@@ -470,7 +464,7 @@ void chargePatient() {
     file.close();
 
   ifstream infile("completedAppts.txt");
-   ofstream outfile("temp.txt");
+    ofstream outfile("temp.txt");
 
 
         // Read each line from the file
@@ -532,10 +526,10 @@ void chargePatient() {
     {
         clearBalance(name);
     }
-// Maraym: else returns back to menu 
-    
-
-    
+    else 
+    {
+        displayAdminMenu();
+    }
 
 }
 
