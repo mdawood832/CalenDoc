@@ -194,7 +194,7 @@ start :
         if(out){
             out<<choice<<":"<<name.c_str()<<"\n";
             out.close();
-            cout<<"\n Appointment booked for Hours : "<< (choice-65) + 9 <<" successfully !!"<<endl;
+            cout<<"\n Appointment booked for Hours : "<< (choice-65) + 8 <<" successfully !!"<<endl;
             
         }
         else{
