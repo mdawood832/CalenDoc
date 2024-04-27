@@ -447,7 +447,7 @@ start :
         if(out){
             out<<choice<<":"<<name.c_str()<<"\n";
             out.close();
-            cout<<"\n Appointment booked for Hours : "<< (choice-65) + 9 <<" successfully !!";
+            cout<<"\n Appointment booked for Hours : "<< (choice-65) + 8 <<" successfully !!";
            
         }
         else{
