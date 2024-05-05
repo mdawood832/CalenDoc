@@ -7,12 +7,9 @@ Streamlining Your Healthcare Journey with Seamless Appointment Scheduling
 
 
 ## Patient Functions
-<br>
-<br>
 <h3>Patient Registration</h3>
-<h4>Patient's random generated ID starts with 1, Provider's starts with 2, Admin's starts with 3</h4>
+Patient's random generated ID starts with 1, Provider's starts with 2, Admin's starts with 3
 <img width="480" alt="1060x700 png 5ec0eb8a1ec54f6cbd829463794c800e" src="https://github.com/mdawood832/CalenDoc/assets/101743220/eb121027-e3de-4382-aae6-700e9c3faaba">
-
 
 
 <br>
@@ -46,15 +43,15 @@ Streamlining Your Healthcare Journey with Seamless Appointment Scheduling
 <br>
 <br>
 <h3>Patient Inputs Feedback on Provider</h3>
-<h4>The patient's feedback is saved to a txt file called "feedback.txt"</h4>
+The patient's feedback is saved to a txt file called "feedback.txt"
 <img width="480" alt="1192x846 png 01cf2fff3d9d4adf83efb1a475514b8c" src="https://github.com/mdawood832/CalenDoc/assets/101743220/5045f987-763f-46f2-b23a-b313651d6076">
 
 
 <br>
 <br>
 <h3>Patient Inputs Feedback on Provider</h3>
-<h4>The accepted insurances at the clinic are Alien, Zombie, and Unicorn. If the patient enters an accepted insurance name the program will 
-print that the insurance is accepted. If not, it will print that the insurance is not accepted. </h4>
+The accepted insurances at the clinic are Alien, Zombie, and Unicorn. If the patient enters an accepted insurance name the program will 
+print that the insurance is accepted. If not, it will print that the insurance is not accepted. 
 <img width="480" alt="1030x584 png ce69203dd8374955931affe2b6bfd8f0" src="https://github.com/mdawood832/CalenDoc/assets/101743220/9574c043-e7cb-4f5a-a636-d1d1e86c823a">
 
 ## Provider Functions
@@ -62,7 +59,7 @@ print that the insurance is accepted. If not, it will print that the insurance i
 <br>
 <br>
 <h3>Provider Registration</h3>
-<h4>The Provider must enter the office password to register a new login, the ID randomly generated starts with 2</h4>
+The Provider must enter the office password to register a new login, the ID randomly generated starts with 2
 <img width="480" alt="1014x586 png f8a1d1edb85f4927980623699e2471f3" src="https://github.com/mdawood832/CalenDoc/assets/101743220/32790d2c-5f04-4f69-81ac-ff60bc08d1ce">
 
 
