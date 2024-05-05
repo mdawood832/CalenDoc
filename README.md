@@ -89,7 +89,7 @@ print that the insurance is accepted. If not, it will print that the insurance i
 <br>
 <br>
 <h3>Login</h3>
-<img width="650" alt="Screenshot 2024-05-04 at 7 49 32 PM" src="https://github.com/mdawood832/CalenDoc/assets/101743220/130a4a33-f22a-4e0c-8490-201f19df7eab">
+<img width="480" alt="Screenshot 2024-05-04 at 7 49 32 PM" src="https://github.com/mdawood832/CalenDoc/assets/101743220/130a4a33-f22a-4e0c-8490-201f19df7eab">
 
 
 <br>
@@ -100,20 +100,20 @@ print that the insurance is accepted. If not, it will print that the insurance i
 <br>
 <br>
 <h3>View all Patients</h3>
-<img width="410" alt="1090x1276 png 8e0f3fc1b4374026a42811d97a121e56" src="https://github.com/mdawood832/CalenDoc/assets/101743220/9a74456d-7c7e-4324-ba2d-ecd5ae78db1b">
+<img width="480" alt="1090x1276 png 8e0f3fc1b4374026a42811d97a121e56" src="https://github.com/mdawood832/CalenDoc/assets/101743220/9a74456d-7c7e-4324-ba2d-ecd5ae78db1b">
 
 
 
 <br>
 <br>
 <h3>View all Feedback</h3>
-<img width="394" alt="1026x1250 png d2e45746beb84013a9b77dbf896275fa" src="https://github.com/mdawood832/CalenDoc/assets/101743220/94f6e23f-e49c-4e02-b6d4-4e8149004276">
+<img width="480" alt="1026x1250 png d2e45746beb84013a9b77dbf896275fa" src="https://github.com/mdawood832/CalenDoc/assets/101743220/94f6e23f-e49c-4e02-b6d4-4e8149004276">
 
 
 
 # Admin Functions
 <h3>Registration</h3>
-<img width="616" alt="Screenshot 2024-05-04 at 8 14 46 PM" src="https://github.com/mdawood832/CalenDoc/assets/101743220/eb2b12a6-cdab-47a1-904c-ed632f143fb2">
+<img width="480" alt="Screenshot 2024-05-04 at 8 14 46 PM" src="https://github.com/mdawood832/CalenDoc/assets/101743220/eb2b12a6-cdab-47a1-904c-ed632f143fb2">
 
 
 <br>
@@ -131,7 +131,7 @@ print that the insurance is accepted. If not, it will print that the insurance i
 <br>
 <br>
 <h3>Schedule an Appointment for a Patient</h3>
-<img width="376" alt="1028x1314 png 104f963046a2479e8a03706d77e4033f" src="https://github.com/mdawood832/CalenDoc/assets/101743220/41e61d60-e17a-4724-85d1-9a8ea65c3e24">
+<img width="480" alt="1028x1314 png 104f963046a2479e8a03706d77e4033f" src="https://github.com/mdawood832/CalenDoc/assets/101743220/41e61d60-e17a-4724-85d1-9a8ea65c3e24">
 
 
 <br>
