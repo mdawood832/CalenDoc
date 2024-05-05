@@ -7,7 +7,7 @@ Streamlining Your Healthcare Journey with Seamless Appointment Scheduling
 
 
 ## Patient Functions
-<h3>Patient Registration</h3>
+<h4>Patient Registration</h4>
 Patient's random generated ID starts with 1, Provider's starts with 2, Admin's starts with 3
 <img width="480" alt="1060x700 png 5ec0eb8a1ec54f6cbd829463794c800e" src="https://github.com/mdawood832/CalenDoc/assets/101743220/eb121027-e3de-4382-aae6-700e9c3faaba">
 
