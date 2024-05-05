@@ -6,7 +6,7 @@ Streamlining Your Healthcare Journey with Seamless Appointment Scheduling
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
 
-## Patient Functions
+# Patient Functions
 <h3>Registration</h3>
 Patient's random generated ID starts with 1, Provider's starts with 2, Admin's starts with 3
 <img width="480" alt="1060x700 png 5ec0eb8a1ec54f6cbd829463794c800e" src="https://github.com/mdawood832/CalenDoc/assets/101743220/eb121027-e3de-4382-aae6-700e9c3faaba">
