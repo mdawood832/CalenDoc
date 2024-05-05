@@ -62,7 +62,7 @@ print that the insurance is accepted. If not, it will print that the insurance i
 
 # Provider Functions
 <h3>Registration</h3>
-The Provider must enter the office password to register a new login, the ID randomly generated starts with 2
+<h4>The Provider must enter the office password to register a new login, the ID randomly generated starts with 2</h4>
 <img width="480" alt="1014x586 png f8a1d1edb85f4927980623699e2471f3" src="https://github.com/mdawood832/CalenDoc/assets/101743220/32790d2c-5f04-4f69-81ac-ff60bc08d1ce">
 
 
@@ -88,6 +88,35 @@ The Provider must enter the office password to register a new login, the ID rand
 <br>
 <h3>View all Feedback</h3>
 <img width="394" alt="1026x1250 png d2e45746beb84013a9b77dbf896275fa" src="https://github.com/mdawood832/CalenDoc/assets/101743220/94f6e23f-e49c-4e02-b6d4-4e8149004276">
+
+
+
+# Admin Functions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
