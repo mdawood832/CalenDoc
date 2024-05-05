@@ -57,6 +57,9 @@ The accepted insurances at the clinic are Alien, Zombie, and Unicorn. If the pat
 print that the insurance is accepted. If not, it will print that the insurance is not accepted. 
 <img width="480" alt="1030x584 png ce69203dd8374955931affe2b6bfd8f0" src="https://github.com/mdawood832/CalenDoc/assets/101743220/9574c043-e7cb-4f5a-a636-d1d1e86c823a">
 
+<br>
+<br>
+
 ## Provider Functions
 
 <br>
