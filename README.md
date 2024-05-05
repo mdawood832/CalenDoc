@@ -92,8 +92,46 @@ print that the insurance is accepted. If not, it will print that the insurance i
 
 
 # Admin Functions
+<br>
+<br>
+<h3>Registration</h3>
+<img width="616" alt="Screenshot 2024-05-04 at 8 14 46 PM" src="https://github.com/mdawood832/CalenDoc/assets/101743220/eb2b12a6-cdab-47a1-904c-ed632f143fb2">
 
 
+<br>
+<br>
+<h3>Login</h3>
+<img width="480" alt="1020x896 png 4f18c99563b945b691e1c90519d740f2" src="https://github.com/mdawood832/CalenDoc/assets/101743220/ed7518c9-bf08-4581-857b-42cff6f612e4">
+
+
+
+<br>
+<br>
+<h3>Charge Patient Copay</h3>
+<img width="480" alt="1022x638 png 977a075ee0b642d3a3db87b9bb2f4b73" src="https://github.com/mdawood832/CalenDoc/assets/101743220/eb2dd5d4-3110-44cc-9b36-9432b54e0729">
+
+<br>
+<br>
+<h3>Schedule an Appointment for a Patient</h3>
+<img width="376" alt="1028x1314 png 104f963046a2479e8a03706d77e4033f" src="https://github.com/mdawood832/CalenDoc/assets/101743220/41e61d60-e17a-4724-85d1-9a8ea65c3e24">
+
+
+<br>
+<br>
+<h3>Cancel an Appointment for a Patient</h3>
+<img width="480" alt="1046x472 png 8b1284a33d29441d84d557e12f96587f" src="https://github.com/mdawood832/CalenDoc/assets/101743220/9713ec34-7638-4eb8-a6cf-610833e6a2e7">
+
+
+<br>
+<br>
+<h3>Reset Schedule for Provider</h3>
+<img width="480" alt="1072x408 png 198c58ab89604d069427e35e15f82904" src="https://github.com/mdawood832/CalenDoc/assets/101743220/f928cdf3-af1f-4630-93f7-d036fe22eefb">
+
+
+<br>
+<br>
+<h3>Reset Weekly Earnings for Provider</h3>
+<img width="480" alt="1050x404 png 6a56e948ca2a4f3099773fed82ce15b6" src="https://github.com/mdawood832/CalenDoc/assets/101743220/a5b33807-9592-4ac2-9bea-0dc285b9a252">
 
 
 
