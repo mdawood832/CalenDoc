@@ -61,9 +61,6 @@ print that the insurance is accepted. If not, it will print that the insurance i
 <br>
 
 # Provider Functions
-
-<br>
-<br>
 <h3>Registration</h3>
 The Provider must enter the office password to register a new login, the ID randomly generated starts with 2
 <img width="480" alt="1014x586 png f8a1d1edb85f4927980623699e2471f3" src="https://github.com/mdawood832/CalenDoc/assets/101743220/32790d2c-5f04-4f69-81ac-ff60bc08d1ce">
@@ -73,3 +70,27 @@ The Provider must enter the office password to register a new login, the ID rand
 <br>
 <h3>Login</h3>
 <img width="650" alt="Screenshot 2024-05-04 at 7 49 32 PM" src="https://github.com/mdawood832/CalenDoc/assets/101743220/130a4a33-f22a-4e0c-8490-201f19df7eab">
+
+
+<br>
+<br>
+<h3>Confirm Appointment Status</h3>
+<img width="480" alt="1016x630 png 98484a73adcf49608b716c956062383e" src="https://github.com/mdawood832/CalenDoc/assets/101743220/5c8bbb1b-362d-400b-8f63-28496af81b44">
+
+<br>
+<br>
+<h3>View all Patients</h3>
+<img width="410" alt="1090x1276 png 8e0f3fc1b4374026a42811d97a121e56" src="https://github.com/mdawood832/CalenDoc/assets/101743220/9a74456d-7c7e-4324-ba2d-ecd5ae78db1b">
+
+
+
+<br>
+<br>
+<h3>View all Feedback</h3>
+<img width="394" alt="1026x1250 png d2e45746beb84013a9b77dbf896275fa" src="https://github.com/mdawood832/CalenDoc/assets/101743220/94f6e23f-e49c-4e02-b6d4-4e8149004276">
+
+
+
+
+
+
