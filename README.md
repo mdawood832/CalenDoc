@@ -38,7 +38,7 @@ Patient's random generated ID starts with 1, Provider's starts with 2, Admin's s
 <br>
 <br>
 <h3>Exit Login Page</h3>
-<img width="607" alt="Screenshot 2024-05-04 at 7 54 34 PM" src="https://github.com/mdawood832/CalenDoc/assets/101743220/30961fb1-6535-4475-b3a9-0cbb1e4fc948">
+<img width="480" alt="Screenshot 2024-05-04 at 7 54 34 PM" src="https://github.com/mdawood832/CalenDoc/assets/101743220/30961fb1-6535-4475-b3a9-0cbb1e4fc948">
 
 
 <br>
@@ -49,7 +49,7 @@ Patient's random generated ID starts with 1, Provider's starts with 2, Admin's s
 <br>
 <br>
 <h3>Patient Information Collection for EXISTING patients</h3>
-<img width="908" alt="Screenshot 2024-05-04 at 8 18 50 PM" src="https://github.com/mdawood832/CalenDoc/assets/101743220/b3c111ed-45c5-4286-ae7d-daa5cb19daa1">
+<img width="480" alt="Screenshot 2024-05-04 at 8 18 50 PM" src="https://github.com/mdawood832/CalenDoc/assets/101743220/b3c111ed-45c5-4286-ae7d-daa5cb19daa1">
 
 
 <br>
