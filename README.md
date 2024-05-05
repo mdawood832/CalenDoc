@@ -92,8 +92,6 @@ print that the insurance is accepted. If not, it will print that the insurance i
 
 
 # Admin Functions
-<br>
-<br>
 <h3>Registration</h3>
 <img width="616" alt="Screenshot 2024-05-04 at 8 14 46 PM" src="https://github.com/mdawood832/CalenDoc/assets/101743220/eb2b12a6-cdab-47a1-904c-ed632f143fb2">
 
