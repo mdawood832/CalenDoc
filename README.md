@@ -31,3 +31,35 @@ Streamlining Your Healthcare Journey with Seamless Appointment Scheduling
 <br>
 <h3>Patient Schedules An Appointment</h3>
 <img width="480" alt="1636x1312 png d0271ad5f00144739e3ab32135598824" src="https://github.com/mdawood832/CalenDoc/assets/101743220/b1d02e01-6df1-429b-b1df-366668cc8a17">
+
+<br>
+<br>
+<h3>Patient Cancels An Appointment</h3>
+<img width="480" alt="1016x566 png e14bfb54e0a74350a12706f9e8a8a0b6" src="https://github.com/mdawood832/CalenDoc/assets/101743220/3c6c8cc9-9cf2-4899-9a49-6024f30970ba">
+
+<br>
+<br>
+<h3>Patient Inputs Feedback on Provider</h3>
+<h4>The patient's feedback is saved to a txt file called "feedback.txt"</h4>
+<img width="480" alt="1192x846 png 01cf2fff3d9d4adf83efb1a475514b8c" src="https://github.com/mdawood832/CalenDoc/assets/101743220/5045f987-763f-46f2-b23a-b313651d6076">
+
+
+<br>
+<br>
+<h3>Patient Inputs Feedback on Provider</h3>
+<h4>The accepted insurances at the clinic are Alien, Zombie, and Unicorn. If the patient enters an accepted insurance name the program will 
+print that the insurance is accepted. If not, it will print that the insurance is not accepted. </h4>
+<img width="480" alt="1030x584 png ce69203dd8374955931affe2b6bfd8f0" src="https://github.com/mdawood832/CalenDoc/assets/101743220/9574c043-e7cb-4f5a-a636-d1d1e86c823a">
+
+
+<br>
+<br>
+<h3>Provider Registration</h3>
+<h4>The Provider must enter the office password to register a new login, the ID randomly generated starts with 2</h4>
+<img width="480" alt="1014x586 png f8a1d1edb85f4927980623699e2471f3" src="https://github.com/mdawood832/CalenDoc/assets/101743220/32790d2c-5f04-4f69-81ac-ff60bc08d1ce">
+
+
+<br>
+<br>
+<h3>Provider Login</h3>
+<img width="650" alt="Screenshot 2024-05-04 at 7 49 32 PM" src="https://github.com/mdawood832/CalenDoc/assets/101743220/130a4a33-f22a-4e0c-8490-201f19df7eab">
