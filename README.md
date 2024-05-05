@@ -46,6 +46,7 @@ Patient's random generated ID starts with 1, Provider's starts with 2, Admin's s
 <br>
 <h3>Patient Inputs Feedback on Provider</h3>
 The patient's feedback is saved to a txt file called "feedback.txt"
+<br>
 <img width="480" alt="1192x846 png 01cf2fff3d9d4adf83efb1a475514b8c" src="https://github.com/mdawood832/CalenDoc/assets/101743220/5045f987-763f-46f2-b23a-b313651d6076">
 
 
