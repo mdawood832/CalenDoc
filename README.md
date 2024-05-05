@@ -1,7 +1,7 @@
 # CalenDoc
 Streamlining Your Healthcare Journey with Seamless Appointment Scheduling
 
-## Technologies Used 
+# Technologies Used 
 ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
@@ -60,7 +60,7 @@ print that the insurance is accepted. If not, it will print that the insurance i
 <br>
 <br>
 
-## Provider Functions
+# Provider Functions
 
 <br>
 <br>
