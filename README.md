@@ -8,6 +8,9 @@ Streamlining Your Healthcare Journey with Seamless Appointment Scheduling
 
 ## Functions
 <h3>Login</h3>
+<img width="480" alt="1028x348 png c7b3c058356c4a1ea8df5083993756f4" src="https://github.com/mdawood832/CalenDoc/assets/101743220/87cebd23-8a48-4391-a4fb-f88facbb5e3f">
+
+<img width="480" alt="1026x692 png ff00807a86f34efa937b906b1d23e6e2" src="https://github.com/mdawood832/CalenDoc/assets/101743220/a0c738f9-8367-4d94-b6d9-25c6002ca868">
 
 <h3>Registration</h3>
 
