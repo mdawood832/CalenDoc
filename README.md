@@ -11,7 +11,13 @@ Streamlining Your Healthcare Journey with Seamless Appointment Scheduling
 <br>
 <br>
 
+# Language Used
 
+# Duration
+
+# Team
+
+# Diagrams
 
 
 # Patient Functions
