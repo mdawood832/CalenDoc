@@ -14,17 +14,24 @@ Streamlining Your Healthcare Journey with Seamless Appointment Scheduling
 
 # Duration
 January 17th to May 3rd, 2024 
+<br>
+<br>
 
 
 # Team
 4 Undergraduate Students 
+<br>
+<br>
 
 # Class Diagram
 <img width="625" alt="Screenshot 2024-06-15 at 1 59 11 PM" src="https://github.com/mdawood832/CalenDoc/assets/101743220/f8446613-df34-413c-bca5-67d3cebb8be0">
+<br>
+<br>
 
 # Final Report
 https://docs.google.com/document/d/1-DBjW2hpUN0ijce85vhF0Tq3Z-3lhSta1WyIQ5YmsPM/edit?usp=sharing
-
+<br>
+<br>
 
 # Patient Functions
 <h3>Registration</h3>
