@@ -44,7 +44,7 @@ January 17th to May 3rd, 2024
 <br>
 
 # Documentation
-https://docs.google.com/document/d/1-DBjW2hpUN0ijce85vhF0Tq3Z-3lhSta1WyIQ5YmsPM/edit?usp=sharing
+https://docs.google.com/document/d/1-DBjW2hpUN0ijce85vhF0Tq3Z-3lhSta1WyIQ5YmsPM/edit?usp=sharing  <br>  <br> 
 **1. Overview: Page 2** <br> 
 **2. Use Cases: Page 4** <br> 
 **3. Class Diagram: Page 6** <br> 
