@@ -45,17 +45,17 @@ January 17th to May 3rd, 2024
 
 # Documentation
 https://docs.google.com/document/d/1-DBjW2hpUN0ijce85vhF0Tq3Z-3lhSta1WyIQ5YmsPM/edit?usp=sharing  <br>  <br> 
-**1. Overview: Page 2** <br> 
-**2. Use Cases: Page 4** <br> 
-**3. Class Diagram: Page 6** <br> 
-**4. Statechart: Page 7** <br> 
-**5. Case Realization: Page 8** <br> 
-**6. Detailed Design of Control, Entity, and Boundary classes: Page 14** <br> 
-**7. Implementation: Page 30** <br> 
-**8. Test Case and Results: Page 30** <br> 
-**9. Test Cases: Page 31** <br> 
-**10. User Documentation: Page 32** <br> 
-**10. Code Screenshots: Page 33** <br>
+**1. Overview:** Page 2 <br> 
+**2. Use Cases:** Page 4 <br> 
+**3. Class Diagram:** Page 6 <br> 
+**4. Statechart:** Page 7 <br> 
+**5. Case Realization:** Page 8 <br> 
+**6. Detailed Design of Control, Entity, and Boundary classes:** Page 14 <br> 
+**7. Implementation:** Page 30 <br> 
+**8. Test Case and Results:** Page 30 <br> 
+**9. Test Cases:** Page 31 <br> 
+**10. User Documentation:** Page 32 <br> 
+**11. Code Screenshots:** Page 33 <br>
 
 <br>
 <br>
