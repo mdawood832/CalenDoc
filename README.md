@@ -1,9 +1,29 @@
 # CalenDoc
-Streamlining Your Healthcare Journey with Seamless Appointment Scheduling
-<br>
-<br>
+
+Calendoc is an appointment booking system designed for patients, doctors, and administrators, developed using C++. It streamlines the appointment management process and enhances communication between users. <br> <br> 
 
 
+# Key Features
+
+1. Appointment Booking: <br> <br> 
+- Patients can add, delete, modify, and view their appointments. <br> 
+- Providers can view their booked appointments and confirm patient attendance status (on time, late, or canceled).<br> 
+- Admins have the ability to book and cancel appointments.<br> <br> 
+
+2. Co-Pay Calculation:<br> <br> 
+- Providers can access their weekly co-pay information, simplifying financial tracking.<br> <br>
+
+
+3. Feedback System: <br> <br> 
+- Patients can submit feedback on their appointments. <br> 
+- Providers can review feedback to improve their services. <br> <br> 
+
+4. Insurance Validation: <br> <br> 
+- Patients can enter their insurance information to check if it is accepted by the medical office.<br> <br> 
+
+5. Account Creation: <br> <br> 
+- Users can create accounts upon initial login, with roles assigned by the medical office (patients, providers, or admins). <br> 
+- Providers and admins receive passwords for role verification during sign-in.<br> <br> 
 
 # Technologies Used 
 ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
