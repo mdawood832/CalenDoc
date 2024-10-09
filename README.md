@@ -43,13 +43,20 @@ January 17th to May 3rd, 2024
 <br>
 <br>
 
-# Class Diagram
-<img width="625" alt="Screenshot 2024-06-15 at 1 59 11 PM" src="https://github.com/mdawood832/CalenDoc/assets/101743220/f8446613-df34-413c-bca5-67d3cebb8be0">
-<br>
-<br>
-
-# Final Report
+# Documentation
 https://docs.google.com/document/d/1-DBjW2hpUN0ijce85vhF0Tq3Z-3lhSta1WyIQ5YmsPM/edit?usp=sharing
+**1. Overview: Page 2** <br> 
+**2. Use Cases: Page 4** <br> 
+**3. Class Diagram: Page 6** <br> 
+**4. Statechart: Page 7** <br> 
+**5. Case Realization: Page 8** <br> 
+**6. Detailed Design of Control, Entity, and Boundary classes: Page 14** <br> 
+**7. Implementation: Page 30** <br> 
+**8. Test Case and Results: Page 30** <br> 
+**9. Test Cases: Page 31** <br> 
+**10. User Documentation: Page 32** <br> 
+**10. Code Screenshots: Page 33** <br>
+
 <br>
 <br>
 
